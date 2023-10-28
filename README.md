@@ -111,6 +111,8 @@ The following diagram shows a high-level overview of the targets and their depen
 
 ```mermaid
 graph TB;
+    test:watch ---> codegen
+    
     ci --> build
     ci --> test
     ci --> lint
@@ -119,6 +121,9 @@ graph TB;
     build --> codegen
     test --> codegen
     lint --> codegen
+    
+    clean
+    dev ---> codegen
 ```
 
 <details>
@@ -130,7 +135,6 @@ It includes the sub-targets, but omits the `*:fix` variants.
 ```mermaid
 graph TD;
     test:watch -----> codegen
-    clean
   
     ci --> build
     ci --> test
@@ -154,6 +158,9 @@ graph TD;
     lint:es --> codegen
     lint:ss --> codegen
     lint:tc --> codegen
+    
+    clean
+    dev -----> codegen
 ```
 </details>
 <p></p>
@@ -173,6 +180,8 @@ To visualize the exact target graph, run `nx graph`.
 
 - `lint`: Ensures code quality through linting rules.
 
+- `dev`: Starts a development server.
+
 - `clean`: Cleans (removes) the output of previous builds.
 
 ### `ci`
@@ -184,8 +193,6 @@ It defines the targets that are run as part of the CI build.
 
 The `codegen` target generates code from an already available source.
 
-By default, it has no dependencies **including no dependency on dependent projects**.
-This zero-default-dependencies rule exists purely as a build optimization for parallelism.
 Projects should define their own dependencies for `codegen` as needed.
 (For example, copying files or requiring a dependant project’s `codegen` or `build`.)
 
@@ -204,6 +211,11 @@ This means that the `test` target collects code coverage.
 > 
 > I have not committed to the single `test` target.
 > I still want to consider additional viewpoints on two targets: `test` and `coverage`.
+> 
+> Additional note: `test:system` may need move to its own top-level target.
+> 1. It is not cacheable, while the other two are.
+> 2. It depends on build, while the other two do not.
+> 3. It does not (usually) have a coverage collection mechanism, while the other two do.
 
 The `test` target defines three sub-targets: `unit`, `integ` (integration), and `system`.
 These sub-targets originate from the three primary testing levels.
@@ -262,6 +274,14 @@ The `lint` target _checks_ for code quality violations, and it fails the build i
 The `lint:*:fix` targets exist for fixing auto-fixable lint rule violations.
 Only some sub-targets provide a `*:fix` rule.
 As a result, you will probably just run the root `lint:fix` most of the time.
+
+### `dev`
+
+The `dev` target starts a development server that runs the application.
+This should include hot module reloading (HMR) or the language’s equivalent.
+It likely starts in “debug” or “development” mode.
+
+The `dev` target should not depend on a full `build`.
 
 ### `clean`
 

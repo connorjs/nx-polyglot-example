@@ -1,6 +1,63 @@
 {
-  "targetDefaults": {},
-  "affected": {
-    "defaultBase": "main"
-  }
+	"$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/nx-schema.json",
+	"affected": {
+		"defaultBase": "main"
+	},
+	"targetDefaults": {
+		"build": {
+			"cache": true,
+			"dependsOn": [ "codegen" ]
+		},
+		"ci": {
+			"cache": false,
+			"dependsOn": [ "build", "format", "lint", "test" ]
+		},
+		"codegen": {
+			"cache": true,
+			"dependsOn": [ "^codegen" ]
+		},
+		"dev": {
+			"cache": false,
+			"dependsOn": [ "codegen" ]
+		},
+		"format": {
+			"cache": true
+		},
+		"lint": {
+			"cache": true,
+			"dependsOn": [ "lint:cs", "lint:es", "lint:ss", "lint:tc" ]
+		},
+		"lint:cs": {
+			"cache": true,
+			"dependsOn": [ "codegen" ]
+		},
+		"lint:es": {
+			"cache": true,
+			"dependsOn": [ "codegen" ]
+		},
+		"lint:ss": {
+			"cache": true,
+			"dependsOn": [ "codegen" ]
+		},
+		"lint:tc": {
+			"cache": true,
+			"dependsOn": [ "codegen" ]
+		},
+		"test": {
+			"cache": false,
+			"dependsOn": [ "test:unit", "test:integ", "test:system" ]
+		},
+		"test:unit": {
+			"cache": true,
+			"dependsOn": [ "codegen" ]
+		},
+		"test:integ": {
+			"cache": true,
+			"dependsOn": [ "codegen" ]
+		},
+		"test:system": {
+			"cache": false,
+			"dependsOn": [ "codegen", "build" ]
+		}
+	}
 }
