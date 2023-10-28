@@ -34,33 +34,20 @@
 		"lint:es": {
 			"cache": true,
 			"dependsOn": [ "codegen" ],
-			"executor": "@nx/eslint:lint",
-			"outputs": [ "{options.outputFile}" ],
+			"executor": "nx:run-commands",
 			"options": {
-				"eslintConfig": "eslint.config.js",
-				"format": "pretty",
-				"lintFilePatterns": [
-					"*.{cjs,cts,graphql,html,js,json,jsonc,jsx,md,ts,tsx}",
-					"src/**/*.{cjs,cts,graphql,html,js,json,jsonc,jsx,md,ts,tsx}"
-				],
-				"hasTypeAwareRules": true
-			}
+				"command": "eslint -f pretty ."
+			},
+			"outputs": [ "{options.outputFile}" ]
 		},
 		"lint:es:fix": {
 			"cache": true,
 			"dependsOn": [ "codegen" ],
-			"executor": "@nx/eslint:lint",
-			"outputs": [ "{options.outputFile}" ],
+			"executor": "nx:run-commands",
 			"options": {
-				"eslintConfig": "eslint.config.js",
-				"fix": true,
-				"format": "pretty",
-				"lintFilePatterns": [
-					"*.{cjs,cts,graphql,html,js,json,jsonc,jsx,md,ts,tsx}",
-					"src/**/*.{cjs,cts,graphql,html,js,json,jsonc,jsx,md,ts,tsx}"
-				],
-				"hasTypeAwareRules": true
-			}
+				"command": "eslint -f pretty . --fix"
+			},
+			"outputs": [ "{options.outputFile}" ]
 		},
 		"lint:fix": {
 			"cache": true,
