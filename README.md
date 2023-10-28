@@ -25,46 +25,65 @@ In the future I will explore remote caching to improve CI builds.
 
 ## Glossary
 
-- **Build target**: An action taken on a project; for example, `build` or `test`.
-  See [§ Build targets](#build-targets).
+### Build target
 
-  A **build target** may define **sub-targets**, which break up the work into individually executable units.
+An action taken on a project; for example, `build` or `test`.
+See [§ Build targets](#build-targets).
 
-  Some related, but different, terms follow.
+A **build target** may define **sub-targets**, which break up the work into individually executable units.
 
-  - Command: Something a developer types into the terminal.
-  - Run script: npm-specific term for targets/tasks.
-  - Task: An invocation of a target on a specific project.
-    _Note that this definition matches [Nx’s term][nx-task] and not [MSBuild’s][msbuild-task]._
+Some related, but different, terms follow.
 
-- **CI**: Continuous integration; the practice of executing the full, automated build regularly.
+- Command: Something a developer types into the terminal.
+- Run script: npm-specific term for targets/tasks.
+- Task: An invocation of a target on a specific project.
+  _Note that this definition matches [Nx’s term][nx-task] and not [MSBuild’s][msbuild-task]._
 
-  The phrase “in CI” refers to the “official” execution of builds on the CI server.
-  The `ci` build target represents the majority of the execution for that build on the CI server.
+### CI
 
-- **Monorepo**: A single repository containing multiple projects with well-defined relationships.
-  See [monorepo.tools][monorepo-tools].
+Continuous integration; the practice of executing the full, automated build regularly.
 
-- **Nx**: A build system built by Nrwl with first-class monorepo support.
-  See [nx.dev][nx].
+The phrase “in CI” refers to the “official” execution of builds on the CI server.
+The `ci` build target represents the majority of the execution for that build on the CI server.
 
-- **Polyglot**: Multiple programming languages.
-  See [“Polyglot (computing)” on Wikipedia][polyglot].
+### Monorepo
 
-- **Project**: An individual unit (think module) of functionality.
-  Synonymous with .NET project or npm package. Applications and libraries both represent projects.
+A single repository containing multiple projects with well-defined relationships.
+See [monorepo.tools][monorepo-tools].
 
-- **Repository**: The git repository and all of its code/files.
-  _Also known as **Solution** and **Workspace**._
+### Nx
 
-  - **Repository** used when emphasizing the git or raw files aspect.
-  - **Solution** used when emphasizing the library and application code, given they solve problems (provide value).
-    - **.NET Solution**: Used when explicitly referencing the .NET (C#) concept: [“What are solutions and projects?”][dotnet-solutions-and-projects]
-  - **Workspace**: Used when emphasizing the collection of projects or discussing build orchestration.
+A build system built by Nrwl with first-class monorepo support.
+See [nx.dev][nx].
 
-- **Solution**: _See **Repository**._
+### Polyglot
 
-- **Workspace**: _See **Repository**._
+Multiple programming languages. 
+See [“Polyglot (computing)” on Wikipedia][polyglot].
+
+### Project
+
+An individual unit (think module) of functionality.
+Synonymous with .NET project or npm package.
+Applications and libraries both represent projects.
+
+### Repository
+
+The git repository and all of its code/files.
+_Also known as **Solution** and **Workspace**._
+
+- **Repository** used when emphasizing the git or raw files aspect.
+- **Solution** used when emphasizing the library and application code, given they solve problems (provide value).
+  - **.NET Solution**: Used when explicitly referencing the .NET (C#) concept: [“What are solutions and projects?”][dotnet-solutions-and-projects]
+- **Workspace**: Used when emphasizing the collection of projects or discussing build orchestration.
+
+### Solution
+
+_See [**Repository**](#repository)_
+
+### Workspace
+
+_See [**Repository**](#repository)_
 
 ## Build targets
 
