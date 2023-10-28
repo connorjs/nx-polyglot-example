@@ -4,6 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "nx": "17.0.2"
+  },
   "workspaces": []
 }
