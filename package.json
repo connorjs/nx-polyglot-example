@@ -1,0 +1,9 @@
+{
+  "name": "@connorjs/nx-polyglot-example",
+  "description": "Root workspace package for nx-polyglot-example: An example Nx monorepo with multiple languages (polyglot).",
+  "private": true,
+  "type": "module",
+  "scripts": {},
+  "devDependencies": {},
+  "workspaces": []
+}
