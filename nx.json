@@ -33,9 +33,44 @@
 		},
 		"lint:es": {
 			"cache": true,
-			"dependsOn": [ "codegen" ]
+			"dependsOn": [ "codegen" ],
+			"executor": "@nx/eslint:lint",
+			"outputs": [ "{options.outputFile}" ],
+			"options": {
+				"eslintConfig": "eslint.config.js",
+				"format": "pretty",
+				"lintFilePatterns": [
+					"*.{cjs,cts,graphql,html,js,json,jsonc,jsx,md,ts,tsx}",
+					"src/**/*.{cjs,cts,graphql,html,js,json,jsonc,jsx,md,ts,tsx}"
+				],
+				"hasTypeAwareRules": true
+			}
+		},
+		"lint:es:fix": {
+			"cache": true,
+			"dependsOn": [ "codegen" ],
+			"executor": "@nx/eslint:lint",
+			"outputs": [ "{options.outputFile}" ],
+			"options": {
+				"eslintConfig": "eslint.config.js",
+				"fix": true,
+				"format": "pretty",
+				"lintFilePatterns": [
+					"*.{cjs,cts,graphql,html,js,json,jsonc,jsx,md,ts,tsx}",
+					"src/**/*.{cjs,cts,graphql,html,js,json,jsonc,jsx,md,ts,tsx}"
+				],
+				"hasTypeAwareRules": true
+			}
+		},
+		"lint:fix": {
+			"cache": true,
+			"dependsOn": [ "lint:es:fix", "lint:ss:fix" ]
 		},
 		"lint:ss": {
+			"cache": true,
+			"dependsOn": [ "codegen" ]
+		},
+		"lint:ss:fix": {
 			"cache": true,
 			"dependsOn": [ "codegen" ]
 		},
