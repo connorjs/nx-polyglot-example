@@ -25,7 +25,8 @@
 		},
 		"lint": {
 			"cache": true,
-			"dependsOn": [ "lint:cs", "lint:es", "lint:ss", "lint:tc" ]
+			"dependsOn": [ "lint:cs", "lint:es", "lint:ss", "lint:ts" ],
+			"executor": "nx:noop"
 		},
 		"lint:cs": {
 			"cache": true,
@@ -36,7 +37,8 @@
 			"dependsOn": [ "codegen" ],
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "eslint -f pretty ."
+				"command": "eslint -f pretty .",
+				"cwd": "{projectRoot}"
 			},
 			"outputs": [ "{options.outputFile}" ]
 		},
@@ -61,17 +63,17 @@
 			"cache": true,
 			"dependsOn": [ "codegen" ]
 		},
-		"lint:tc": {
+		"lint:ts": {
 			"cache": true,
-			"dependsOn": [ "codegen" ]
+			"dependsOn": [ "codegen" ],
+			"executor": "nx:run-commands",
+			"options": {
+				"command": "tsc"
+			}
 		},
 		"test": {
 			"cache": false,
-			"dependsOn": [ "test:unit", "test:integ", "test:system" ]
-		},
-		"test:unit": {
-			"cache": true,
-			"dependsOn": [ "codegen" ]
+			"dependsOn": [ "test:integ", "test:system", "test:unit" ]
 		},
 		"test:integ": {
 			"cache": true,
@@ -79,7 +81,11 @@
 		},
 		"test:system": {
 			"cache": false,
-			"dependsOn": [ "codegen", "build" ]
+			"dependsOn": [ "build", "codegen" ]
+		},
+		"test:unit": {
+			"cache": true,
+			"dependsOn": [ "codegen" ]
 		}
 	},
 	"workspaceLayout": {

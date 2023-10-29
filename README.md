@@ -153,11 +153,11 @@ graph TD;
     lint --> lint:cs
     lint --> lint:es
     lint --> lint:ss
-    lint --> lint:tc
+    lint --> lint:ts
     lint:cs --> codegen
     lint:es --> codegen
     lint:ss --> codegen
-    lint:tc --> codegen
+    lint:ts --> codegen
     
     clean
     dev -----> codegen
@@ -244,7 +244,8 @@ The `format:fix` target exists for applying (fixing) the formatting.
 ### `lint`
 
 The `lint` target ensures code quality through linting rules.
-Projects should NOT configure stylistic rules related to formatting; instead, the `format` target should handle those.
+Projects should NOT configure stylistic rules related to formatting.
+Instead, the `format` target should handle those.
 
 Some programming languages, such as C# and Java, provide “lint flags” as part of their compiler.
 This `lint` target does NOT include run those lint flags, but they are a part of code quality verification.
@@ -264,8 +265,8 @@ For brevity, the sub-targets have a two-character name.
 - `lint:ss`: Stylesheet linting rules (css, scss, etc).
   _`ss` for **S**tyle**S**heets._
 
-- `lint:tc`: Type checking as a form of linting (interpreted languages, `tsc` for TypeScript).
-  _`tc` for **T**ype **C**hecking._
+- `lint:ts`: TypeScript type checking (`tsc`) as a form of linting (TypeScript).
+  _`ts` for **T**ype**S**cript._
 
   _Note: Some folks consider type-checking as a pre-build step.
   I recommend it as an independent linting step to allow builds (especially a running development server) to execute without failing due to type issues in languages like Python or JavaScript/TypeScript._
