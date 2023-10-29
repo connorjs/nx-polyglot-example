@@ -47,7 +47,8 @@
 			"dependsOn": [ "codegen" ],
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "eslint -f pretty . --fix"
+				"command": "eslint -f pretty . --fix",
+				"cwd": "{projectRoot}"
 			},
 			"outputs": [ "{options.outputFile}" ]
 		},
@@ -68,7 +69,8 @@
 			"dependsOn": [ "codegen" ],
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "tsc"
+				"command": "tsc",
+				"cwd": "{projectRoot}"
 			}
 		},
 		"test": {
