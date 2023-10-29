@@ -81,5 +81,9 @@
 			"cache": false,
 			"dependsOn": [ "codegen", "build" ]
 		}
+	},
+	"workspaceLayout": {
+		"appsDir": "apps",
+		"libsDir": "libs"
 	}
 }
