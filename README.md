@@ -274,25 +274,25 @@ To visualize the exact target graph, run `nx graph`.
 
 - `clean`: Cleans (removes) the output of previous builds.
 
-### `ci`
+### `ci` target
 
 The `ci` target exists as the root target.
 It defines the targets that are run as part of the CI build.
 
-### `codegen`
+### `codegen` target
 
 The `codegen` target generates code from an already available source.
 
 Projects should define their own dependencies for `codegen` as needed.
 (For example, copying files or requiring a dependant project’s `codegen` or `build`.)
 
-### `build`
+### `build` target
 
 The `build` target builds the project.
 Depending on the language, this includes compilation (or transpilation).
 The `build` target produces the artifact to run (a DLL for C#, a jar for Java, or a bundle for JS).
 
-### `test`
+### `test` target
 
 The `test` target runs the tests for the project as it should run in CI.
 This means that the `test` target collects code coverage.
@@ -321,7 +321,7 @@ Alternatively, the project can provide commands in its README on how to run thes
 There is not a separate `coverage` test target.
 Coverage will run in CI and should be fast enough to run locally, which counters the main reason to have separate targets.
 
-### `format`
+### `format` target
 
 The `format` target ensures proper formatting.
 “Formatting” refers to the “display” of the code: predominantly the use of whitespace.
@@ -332,7 +332,7 @@ Given the use of [Nx], Node (and prettier) already exist in the repository, so u
 The `format` target _checks_ for proper formatting, and it fails the build if it detects an issue.
 The `format:fix` target exists for applying (fixing) the formatting.
 
-### `lint`
+### `lint` target
 
 The `lint` target ensures code quality through linting rules.
 Projects should NOT configure stylistic rules related to formatting.
@@ -367,7 +367,7 @@ The `lint:*:fix` targets exist for fixing auto-fixable lint rule violations.
 Only some sub-targets provide a `*:fix` rule.
 As a result, you will probably just run the root `lint:fix` most of the time.
 
-### `dev`
+### `dev` target
 
 The `dev` target starts a development server that runs the application.
 This should include hot module reloading (HMR) or the language’s equivalent.
@@ -375,7 +375,7 @@ It likely starts in “debug” or “development” mode.
 
 The `dev` target should not depend on a full `build`.
 
-### `clean`
+### `clean` target
 
 The `clean` target cleans (removes) the output of previous builds.
 It should NOT delete cached dependencies.
