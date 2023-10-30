@@ -7,7 +7,7 @@
 			"command": "tsp compile {projectRoot}/src"
 		},
 		"clean": {
-			"command": "rm -rf {projectRoot}/dist"
+			"command": "shx rm -rf {projectRoot}/dist"
 		}
 	}
 }
