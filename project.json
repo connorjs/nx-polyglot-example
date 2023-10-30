@@ -3,20 +3,11 @@
 	"name": "root",
 	"targets": {
 		"ci": {
-			"executor": "nx:run-commands",
-			"options": {
-				"commands": [
-					"nx run format",
-					"nx run-many --targets build,lint,test --exclude root"
-				]
-			}
+			"command": "nx run-many --targets build,format,lint,test"
 		},
 		"format": {
 			"cache": true,
 			"command": "echo 'format'"
-		},
-		"lint": {
-			"command": "nx run-many -t lint --exclude root"
 		}
 	}
 }
