@@ -6,6 +6,7 @@ Example [Nx] monorepo with multiple languages (polyglot).
 
 - [My goals](#my-goals)
 - [About](#about)
+- [Getting started](#getting-started)
 - [Glossary](#glossary)
 - [Build targets](#build-targets)
 
@@ -22,6 +23,44 @@ Nx orchestrates the build process across both build tools (`npm` and `MSBuild`).
 
 Nx caches task results, handles execution order, and can run only “affected” tasks; all of which speed up local development.
 In the future I will explore remote caching to improve CI builds.
+
+## Getting started
+
+To build and run this project, you need `npm` (`node`) and `dotnet` installed.
+Refer to the official docs (below) or follow your personal preference or company’s guidance.
+
+- [“Downloading and installing Node.js and npm”](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+- [“Download .NET”](https://dotnet.microsoft.com/en-us/download)
+
+1. Verify installation
+
+   ```shell
+   node -v
+   npm -v
+   dotnet --version
+   ```
+
+2. Install node dependencies
+
+   ```shell
+   npm clean-install # npm ci
+   ```
+
+3. Install `nx` globally.
+
+   ```shell
+   npm install --global nx@latest
+   ```
+
+   Installing globally allows running commands without the `npx` prefix.
+   The global `nx` will use the locally installed (`npm ci`) version for consistency.
+
+4. Build and run an application.
+
+   ```shell
+   nx ci # Executes a “full” CI build
+   # TODO: Run an application
+   ```
 
 ## Glossary
 
