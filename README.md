@@ -58,7 +58,7 @@ See [nx.dev][nx].
 
 ### Polyglot
 
-Multiple programming languages. 
+Multiple programming languages.
 See [“Polyglot (computing)” on Wikipedia][polyglot].
 
 ### Project
@@ -112,16 +112,16 @@ The following diagram shows a high-level overview of the targets and their depen
 ```mermaid
 graph TB;
     test:watch ---> codegen
-    
+
     ci --> build
     ci --> test
     ci --> lint
     ci --> format
-    
+
     build --> codegen
     test --> codegen
     lint --> codegen
-    
+
     clean
     dev ---> codegen
 ```
@@ -135,21 +135,21 @@ It includes the sub-targets, but omits the `*:fix` variants.
 ```mermaid
 graph TD;
     test:watch -----> codegen
-  
+
     ci --> build
     ci --> test
     ci --> format
     ci --> lint
-    
+
     build --> codegen
-    
+
     test --> test:system
     test --> test:integ
     test --> test:unit
     test:system --> build
     test:integ --> codegen
     test:unit --> codegen
-    
+
     lint --> lint:cs
     lint --> lint:es
     lint --> lint:ss
@@ -158,10 +158,11 @@ graph TD;
     lint:es --> codegen
     lint:ss --> codegen
     lint:ts --> codegen
-    
+
     clean
     dev -----> codegen
 ```
+
 </details>
 <p></p>
 
@@ -208,11 +209,12 @@ The `test` target runs the tests for the project as it should run in CI.
 This means that the `test` target collects code coverage.
 
 > **Note**
-> 
+>
 > I have not committed to the single `test` target.
 > I still want to consider additional viewpoints on two targets: `test` and `coverage`.
-> 
+>
 > Additional note: `test:system` may need move to its own top-level target.
+>
 > 1. It is not cacheable, while the other two are.
 > 2. It depends on build, while the other two do not.
 > 3. It does not (usually) have a coverage collection mechanism, while the other two do.
@@ -228,7 +230,7 @@ Projects can optionally define a `test:watch` target that starts the tests (or a
 Alternatively, the project can provide commands in its README on how to run these.
 
 There is not a separate `coverage` test target.
-Coverage will run in CI and should be fast enough to run locally, which counters the main reason to have separate targets. 
+Coverage will run in CI and should be fast enough to run locally, which counters the main reason to have separate targets.
 
 ### `format`
 

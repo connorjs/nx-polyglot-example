@@ -5,7 +5,7 @@
  * @returns hello string.
  */
 export function hello(name?: string | undefined): string {
-  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing -- Handle empty string
-  const nameToReturn = name || `world`;
-  return `Hello, ${nameToReturn}!`;
+	// eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing -- Handle empty string
+	const nameToReturn = name || `world`;
+	return `Hello, ${nameToReturn}!`;
 }

@@ -3,8 +3,8 @@
 	"name": "hello-js",
 	"sourceRoot": "libs/hello-js/src",
 	"targets": {
-		"lint": { },
-		"lint:es": { },
-		"lint:ts": { }
+		"lint": {},
+		"lint:es": {},
+		"lint:ts": {}
 	}
 }

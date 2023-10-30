@@ -7,7 +7,10 @@
 		},
 		"format": {
 			"cache": true,
-			"command": "echo 'format'"
+			"command": "prettier --list-different '**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsx}' --ignore-path .gitignore"
+		},
+		"format:fix": {
+			"command": "prettier --write '**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsx}' --ignore-path .gitignore"
 		}
 	}
 }

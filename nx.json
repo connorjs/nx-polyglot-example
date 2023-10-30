@@ -6,60 +6,60 @@
 	"targetDefaults": {
 		"build": {
 			"cache": true,
-			"dependsOn": [ "codegen" ]
+			"dependsOn": ["codegen"]
 		},
 		"codegen": {
 			"cache": true,
-			"dependsOn": [ "^codegen" ]
+			"dependsOn": ["^codegen"]
 		},
 		"dev": {
 			"cache": false,
-			"dependsOn": [ "codegen" ]
+			"dependsOn": ["codegen"]
 		},
 		"lint": {
 			"cache": true,
-			"dependsOn": [ "lint:cs", "lint:es", "lint:ss", "lint:ts" ],
+			"dependsOn": ["lint:cs", "lint:es", "lint:ss", "lint:ts"],
 			"executor": "nx:noop"
 		},
 		"lint:cs": {
 			"cache": true,
-			"dependsOn": [ "codegen" ]
+			"dependsOn": ["codegen"]
 		},
 		"lint:es": {
 			"cache": true,
-			"dependsOn": [ "codegen" ],
+			"dependsOn": ["codegen"],
 			"executor": "nx:run-commands",
 			"options": {
 				"command": "eslint -f pretty .",
 				"cwd": "{projectRoot}"
 			},
-			"outputs": [ "{options.outputFile}" ]
+			"outputs": ["{options.outputFile}"]
 		},
 		"lint:es:fix": {
 			"cache": true,
-			"dependsOn": [ "codegen" ],
+			"dependsOn": ["codegen"],
 			"executor": "nx:run-commands",
 			"options": {
 				"command": "eslint -f pretty . --fix",
 				"cwd": "{projectRoot}"
 			},
-			"outputs": [ "{options.outputFile}" ]
+			"outputs": ["{options.outputFile}"]
 		},
 		"lint:fix": {
 			"cache": true,
-			"dependsOn": [ "lint:es:fix", "lint:ss:fix" ]
+			"dependsOn": ["lint:es:fix", "lint:ss:fix"]
 		},
 		"lint:ss": {
 			"cache": true,
-			"dependsOn": [ "codegen" ]
+			"dependsOn": ["codegen"]
 		},
 		"lint:ss:fix": {
 			"cache": true,
-			"dependsOn": [ "codegen" ]
+			"dependsOn": ["codegen"]
 		},
 		"lint:ts": {
 			"cache": true,
-			"dependsOn": [ "codegen" ],
+			"dependsOn": ["codegen"],
 			"executor": "nx:run-commands",
 			"options": {
 				"command": "tsc",
@@ -68,19 +68,19 @@
 		},
 		"test": {
 			"cache": false,
-			"dependsOn": [ "test:integ", "test:system", "test:unit" ]
+			"dependsOn": ["test:integ", "test:system", "test:unit"]
 		},
 		"test:integ": {
 			"cache": true,
-			"dependsOn": [ "codegen" ]
+			"dependsOn": ["codegen"]
 		},
 		"test:system": {
 			"cache": false,
-			"dependsOn": [ "build", "codegen" ]
+			"dependsOn": ["build", "codegen"]
 		},
 		"test:unit": {
 			"cache": true,
-			"dependsOn": [ "codegen" ]
+			"dependsOn": ["codegen"]
 		}
 	},
 	"workspaceLayout": {

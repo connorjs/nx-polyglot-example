@@ -1,14 +1,20 @@
 {
-  "name": "@connorjs/nx-polyglot-example",
-  "description": "Root workspace package for nx-polyglot-example: An example Nx monorepo with multiple languages (polyglot).",
-  "private": true,
-  "type": "module",
-  "scripts": {},
-  "devDependencies": {
-    "eslint-config-connorjs": "^1.0.0-alpha.0",
-    "eslint-formatter-pretty": "^6.0.0",
-    "nx": "^17.0.2",
-    "typescript": "^5.2.2"
-  },
-  "workspaces": []
+	"name": "@connorjs/nx-polyglot-example",
+	"description": "Root workspace package for nx-polyglot-example: An example Nx monorepo with multiple languages (polyglot).",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"prepare": "is-ci || husky install"
+	},
+	"devDependencies": {
+		"eslint-config-connorjs": "^1.0.0-alpha.0",
+		"eslint-formatter-pretty": "^6.0.0",
+		"husky": "^8.0.3",
+		"is-ci": "^3.0.1",
+		"lint-staged": "^15.0.2",
+		"nx": "^17.0.2",
+		"prettier": "^3.0.3",
+		"typescript": "^5.2.2"
+	},
+	"workspaces": []
 }
