@@ -6,6 +6,7 @@ Example [Nx] monorepo with multiple languages (polyglot).
 
 - [My goals](#my-goals)
 - [About](#about)
+- [Workspace structure](#workspace-structure)
 - [Getting started](#getting-started)
 - [Glossary](#glossary)
 - [Build targets](#build-targets)
@@ -24,6 +25,37 @@ Nx orchestrates the build process across both build tools (`npm` and `MSBuild`).
 Nx caches task results, handles execution order, and can run only “affected” tasks; all of which speed up local development.
 In the future I will explore remote caching to improve CI builds.
 
+## Workspace structure
+
+### Directories
+
+An overview of the root directories follows.
+Refer to the [§ Glossary](#glossary) for clarity on any terms.
+
+- `.husky`: Git hooks
+
+- `apps`: Applications
+
+- `libs`: Libraries
+
+- `tools`: Scripts
+
+- Repository-wide configuration files live in the root directory
+
+> **Note**
+>
+> I have used a flat, two-tier structure of projects during my initial exploration.
+> However, this may move to a three-tier structure that partitions based on application (or technology).
+> See [“Using Nx at Enterprises”][nx-enterprise].
+
+### Project naming conventions
+
+Projects reside within the `apps` and `libs` directories.
+They should follow the naming conventions of their technology.
+
+For example, npm/Node projects use `lower-kebab-case-like-this`
+and .NET projects use `Namespaced.PascalCase.LikeThis`.
+
 ## Getting started
 
 To build and run this project, you need `npm` (`node`) and `dotnet` installed.
@@ -31,6 +63,8 @@ Refer to the official docs (below) or follow your personal preference or company
 
 - [“Downloading and installing Node.js and npm”](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 - [“Download .NET”](https://dotnet.microsoft.com/en-us/download)
+
+Complete the following steps to build and run an application.
 
 1. Verify installation
 
@@ -64,6 +98,15 @@ Refer to the official docs (below) or follow your personal preference or company
 
 ## Glossary
 
+### Application
+
+A [**project**](#project) that runs on its own;
+a deployed unit (along with its dependent [**libraries**](#library)).
+It matches the [Container term in the C4 model][c4model].
+
+Applications reside in the `apps` directory.
+See [Nx’s “Applications and libraries”][nx-apps-and-libs].
+
 ### Build target
 
 An action taken on a project; for example, `build` or `test`.
@@ -84,6 +127,13 @@ Continuous integration; the practice of executing the full, automated build regu
 
 The phrase “in CI” refers to the “official” execution of builds on the CI server.
 The `ci` build target represents the majority of the execution for that build on the CI server.
+
+### Library
+
+A [**project**](#project) that is used by [**applications**](#application) or other **libraries**.
+
+Libraries reside in the `libs` directory.
+See [Nx’s “Applications and libraries”][nx-apps-and-libs].
 
 ### Monorepo
 
@@ -330,11 +380,14 @@ The `dev` target should not depend on a full `build`.
 The `clean` target cleans (removes) the output of previous builds.
 It should NOT delete cached dependencies.
 
+[c4model]: https://c4model.com
 [dotnet-solutions-and-projects]: https://learn.microsoft.com/en-us/visualstudio/ide/solutions-and-projects-in-visual-studio?view=vs-2022
 [gradle-java]: https://docs.gradle.org/current/userguide/java_plugin.html
 [monorepo-tools]: https://monorepo.tools
 [msbuild-task]: https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2015/msbuild/msbuild-tasks
 [nx]: https://nx.dev/
+[nx-apps-and-libs]: https://nx.dev/concepts/more-concepts/applications-and-libraries
+[nx-enterprise]: https://nx.dev/concepts/more-concepts/monorepo-nx-enterprise
 [nx-task]: https://nx.dev/core-features/run-tasks
 [polyglot]: https://en.wikipedia.org/wiki/Polyglot_(computing)
 [prettier]: https://prettier.io
