@@ -216,7 +216,7 @@ graph TB;
 ```
 
 <details>
-<summary>Detailed diagram with sub-targets</summary>
+<summary><b>Detailed diagram with sub-targets</b></summary>
 
 The following diagram shows the build lifecycle in more detail.
 It includes the sub-targets, but omits the `*:fix` variants.
