@@ -5,12 +5,15 @@
 		"ci": {
 			"command": "nx run-many --targets build,format,lint,test"
 		},
+		"clean": {
+			"command": "nx run-many --target clean --exclude root"
+		},
 		"format": {
 			"cache": true,
-			"command": "prettier --list-different '**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsx}' --ignore-path .gitignore"
+			"command": "prettier '**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsp,tsx}' --ignore-path .gitignore --list-different"
 		},
 		"format:fix": {
-			"command": "prettier --write '**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsx}' --ignore-path .gitignore"
+			"command": "prettier '**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsp,tsx}' --ignore-path .gitignore --write"
 		}
 	}
 }

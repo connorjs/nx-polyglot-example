@@ -1,0 +1,13 @@
+{
+	"$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
+	"name": "weather-api-spec",
+	"sourceRoot": "libs/weather-api-spec",
+	"targets": {
+		"build": {
+			"command": "tsp compile {projectRoot}/src"
+		},
+		"clean": {
+			"command": "rm -rf {projectRoot}/dist"
+		}
+	}
+}
