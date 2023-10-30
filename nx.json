@@ -8,10 +8,6 @@
 			"cache": true,
 			"dependsOn": [ "codegen" ]
 		},
-		"ci": {
-			"cache": false,
-			"dependsOn": [ "build", "format", "lint", "test" ]
-		},
 		"codegen": {
 			"cache": true,
 			"dependsOn": [ "^codegen" ]
@@ -19,9 +15,6 @@
 		"dev": {
 			"cache": false,
 			"dependsOn": [ "codegen" ]
-		},
-		"format": {
-			"cache": true
 		},
 		"lint": {
 			"cache": true,
