@@ -96,6 +96,14 @@ Complete the following steps to build and run an application.
    # TODO: Run an application
    ```
 
+> **Warning**
+>
+> I used [OpenAPI Generator][openapi-generator] to generate the C# server stub.
+> It requires Java to run, so I may need to add Java install, too.
+>
+> However, I hope to replace Open API generator with TypeSpec’s built-in generator.
+> [See TypeSpec#2458 on GitHub](https://github.com/microsoft/typespec/pull/2458).
+
 ## Glossary
 
 ### Application
@@ -389,6 +397,7 @@ It should NOT delete cached dependencies.
 [nx-apps-and-libs]: https://nx.dev/concepts/more-concepts/applications-and-libraries
 [nx-enterprise]: https://nx.dev/concepts/more-concepts/monorepo-nx-enterprise
 [nx-task]: https://nx.dev/core-features/run-tasks
+[openapi-generator]: https://openapi-generator.tech
 [polyglot]: https://en.wikipedia.org/wiki/Polyglot_(computing)
 [prettier]: https://prettier.io
 [testing-levels]: https://en.wikipedia.org/wiki/Software_testing#Testing_levels
