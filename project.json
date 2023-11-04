@@ -4,11 +4,21 @@
 	"name": "root",
 	"targets": {
 		"ci": {
-			"dependsOn": ["^build", "^format", "^lint", "^test"],
+			"dependsOn": ["^build", "^format", "^lint", "^test", "root-check"],
 			"executor": "nx:noop"
 		},
 		"clean": {
 			"command": "nx run-many --target clean --exclude root"
+		},
+		"root-check": {
+			"cache": true,
+			"executor": "nx:run-commands",
+			"options": {
+				"commands": [
+					"eslint -f pretty '*.{cjs,js,json,md}'",
+					"prettier '*.{cjs,js,json,md}' --ignore-path .gitignore --list-different"
+				]
+			}
 		}
 	}
 }
