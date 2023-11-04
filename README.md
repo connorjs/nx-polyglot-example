@@ -359,7 +359,7 @@ Given the use of [Nx], Node (and prettier) already exist in the repository, so u
 The `format` target _checks_ for proper formatting, and it fails the build if it detects an issue.
 It depends on tool-specific tasks (example: `prettier`).
 
-The `format:fix` target exists for applying (fixing) the formatting.
+The `format:fix` target exists (only at the root) for applying (fixing) the formatting.
 You should configure your IDE to format on save, so that you do not have to run this.
 The pre-commit hook should also apply formatting (see [lint-staged.config.cjs](./lint-staged.config.cjs)).
 

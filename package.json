@@ -4,7 +4,7 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"prepare": "is-ci || husky install"
+		"prepare": "dotnet tool restore && is-ci || husky install"
 	},
 	"devDependencies": {
 		"@typespec/compiler": "^0.49.0",

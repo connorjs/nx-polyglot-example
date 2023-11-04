@@ -20,6 +20,22 @@
 			"cache": true,
 			"executor": "nx:noop"
 		},
+		"csharpier": {
+			"cache": true,
+			"executor": "nx:run-commands",
+			"options": {
+				"command": "dotnet csharpier --check .",
+				"cwd": "{projectRoot}"
+			}
+		},
+		"csharpier:fix": {
+			"cache": false,
+			"executor": "nx:run-commands",
+			"options": {
+				"command": "dotnet csharpier .",
+				"cwd": "{projectRoot}"
+			}
+		},
 		"dev": {
 			"cache": false,
 			"dependsOn": ["dotnet run"],
@@ -78,11 +94,6 @@
 			"dependsOn": ["prettier"],
 			"executor": "nx:noop"
 		},
-		"format:fix": {
-			"cache": true,
-			"dependsOn": ["prettier:fix"],
-			"executor": "nx:noop"
-		},
 		"lint": {
 			"cache": true,
 			"dependsOn": ["eslint", "tsc"],
@@ -97,14 +108,6 @@
 			"executor": "nx:run-commands",
 			"options": {
 				"command": "prettier '**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsp,tsx}' --ignore-path .gitignore --list-different",
-				"cwd": "{projectRoot}"
-			}
-		},
-		"prettier:fix": {
-			"cache": true,
-			"executor": "nx:run-commands",
-			"options": {
-				"command": "prettier '**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsp,tsx}' --ignore-path .gitignore --write",
 				"cwd": "{projectRoot}"
 			}
 		},

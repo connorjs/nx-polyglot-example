@@ -10,6 +10,15 @@
 		"clean": {
 			"command": "nx run-many --target clean --exclude root"
 		},
+		"format:fix": {
+			"executor": "nx:run-commands",
+			"options": {
+				"commands": [
+					"dotnet csharpier .",
+					"prettier '**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsp,tsx}' --ignore-path .gitignore --write"
+				]
+			}
+		},
 		"root-check": {
 			"cache": true,
 			"executor": "nx:run-commands",

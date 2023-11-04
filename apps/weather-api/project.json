@@ -5,8 +5,10 @@
 	"targets": {
 		"build": {},
 		"clean": {},
+		"csharpier": {},
 		"dev": {},
 		"dotnet build": {},
-		"dotnet run": {}
+		"dotnet run": {},
+		"format": {}
 	}
 }
