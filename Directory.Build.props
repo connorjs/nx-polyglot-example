@@ -3,8 +3,7 @@
     <!-- https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild-properties -->
     <PropertyGroup>
         <!-- Artifacts -->
-        <UseArtifactsOutput>true</UseArtifactsOutput>
-        <ArtifactsPath>$(MSBuildThisFileDirectory)build\artifacts</ArtifactsPath>
+        <ArtifactsPath>$(MSBuildThisFileDirectory)dist\$(MSBuildProjectName)</ArtifactsPath>
     </PropertyGroup>
 
     <!-- MSBuild properties (for .NET) -->
@@ -23,7 +22,6 @@
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 
         <!-- Reference -->
-        <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences> <!-- I think... -->
         <DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences> <!-- I think... -->
 
         <!-- Code generation -->

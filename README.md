@@ -238,9 +238,11 @@ graph TD;
     ci --> test
     ci --> lint
 
-    build ---> codegen
+    build --> dotnet_build[dotnet build]
+    dotnet_build --> codegen
 
     format --> prettier
+    format --> csharpier
 
     test --> test:integ
     test --> test:unit
@@ -254,8 +256,10 @@ graph TD;
     stylelint --> codegen
     tsc --> codegen
 
-    clean
-    dev ----> codegen
+    clean ---> dotnet_clean[dotnet clean]
+
+    dev ---> dotnet_run[dotnet run]
+    dotnet_run --> codegen
 ```
 
 </details>
@@ -280,6 +284,12 @@ To visualize the exact target graph, run `nx graph`.
 
 - `clean`: Cleans (removes) the output of previous builds.
 
+These standard targets depend on tool-specific sub-targets to properly orchestrate the build in a polyglot workspace.
+For example, the `build` task depends on `dotnet build` and `vite build`.
+
+Using target dependencies this way allow developers to always use the target (example: `build`) and not worry about which technology or tool to use.
+It also restricts most target (command) logic to `nx.json` without needing to use Nx executors.
+
 ### `ci` target
 
 The `ci` target exists in the root project.
@@ -297,6 +307,13 @@ Projects should define their own dependencies for `codegen` as needed.
 The `build` target builds the project.
 Depending on the language, this includes compilation (or transpilation).
 The `build` target produces the artifact to run (a DLL for C#, a jar for Java, or a bundle for JS).
+
+The sub-targets follow.
+Their name matches the tool and subcommand used.
+
+- `dotnet build`
+- `tsp compile`
+- `vite build`
 
 ### `test` target
 

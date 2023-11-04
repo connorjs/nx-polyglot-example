@@ -6,23 +6,56 @@
 	"targetDefaults": {
 		"build": {
 			"cache": true,
-			"dependsOn": ["codegen"]
+			"dependsOn": ["dotnet build", "tsp compile"],
+			"executor": "nx:noop"
+		},
+		"clean": {
+			"cache": false,
+			"executor": "nx:run-commands",
+			"options": {
+				"command": "shx rm -rf dist/{projectName}"
+			}
 		},
 		"codegen": {
 			"cache": true,
-			"dependsOn": ["^codegen"]
+			"executor": "nx:noop"
 		},
 		"dev": {
 			"cache": false,
-			"dependsOn": ["codegen"]
+			"dependsOn": ["dotnet run"],
+			"executor": "nx:noop"
+		},
+		"dotnet build": {
+			"cache": true,
+			"dependsOn": ["^dotnet build"],
+			"executor": "nx:run-commands",
+			"inputs": ["{projectRoot}/*.{cs,csproj}", "{projectRoot}/src"],
+			"options": {
+				"command": "dotnet build {projectRoot} --no-dependencies"
+			},
+			"outputs": ["{workspaceRoot}/dist/{projectName}"]
+		},
+		"dotnet clean": {
+			"cache": false,
+			"executor": "nx:run-commands",
+			"options": {
+				"command": "dotnet clean {projectRoot} --verbosity quiet"
+			}
+		},
+		"dotnet run": {
+			"cache": false,
+			"dependsOn": ["codegen"],
+			"executor": "nx:run-commands",
+			"options": {
+				"command": "dotnet run --project {projectRoot}"
+			}
 		},
 		"eslint": {
 			"cache": true,
 			"dependsOn": ["codegen"],
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "eslint -f pretty .",
-				"cwd": "{projectRoot}"
+				"command": "eslint -f pretty {projectRoot}"
 			},
 			"outputs": ["{options.outputFile}"]
 		},
@@ -31,8 +64,7 @@
 			"dependsOn": ["codegen"],
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "eslint -f pretty . --fix",
-				"cwd": "{projectRoot}"
+				"command": "eslint -f pretty {projectRoot} --fix"
 			},
 			"outputs": ["{options.outputFile}"]
 		},
@@ -59,16 +91,14 @@
 			"cache": true,
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "prettier '**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsp,tsx}' --ignore-path .gitignore --list-different",
-				"cwd": "{projectRoot}"
+				"command": "prettier '{projectRoot}/**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsp,tsx}' --ignore-path .gitignore --list-different"
 			}
 		},
 		"prettier:fix": {
 			"cache": true,
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "prettier '**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsp,tsx}' --ignore-path .gitignore --write",
-				"cwd": "{projectRoot}"
+				"command": "prettier '{projectRoot}/**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsp,tsx}' --ignore-path .gitignore --write"
 			}
 		},
 		"test": {
@@ -88,9 +118,17 @@
 			"dependsOn": ["codegen"],
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "tsc",
-				"cwd": "{projectRoot}"
+				"command": "tsc -p {projectRoot}"
 			}
+		},
+		"tsp compile": {
+			"cache": true,
+			"executor": "nx:run-commands",
+			"inputs": ["{projectRoot}/*.yaml", "{projectRoot}/src"],
+			"options": {
+				"command": "tsp compile {projectRoot}/src"
+			},
+			"outputs": ["{workspaceRoot}/dist/{projectName}"]
 		}
 	},
 	"workspaceLayout": {
