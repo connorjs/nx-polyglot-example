@@ -1,6 +1,6 @@
 {
 	"$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
-	"implicitDependencies": ["hello-js", "weather-api-spec"],
+	"implicitDependencies": ["hello-js", "weather-api", "weather-api-spec"],
 	"name": "root",
 	"targets": {
 		"ci": {
