@@ -210,10 +210,10 @@ The following diagram shows a high-level overview of the targets and their depen
 graph TB;
     test:watch ---> codegen
 
+    ci --> format
     ci --> build
     ci --> test
     ci --> lint
-    ci --> format
 
     build --> codegen
     test --> codegen
@@ -231,33 +231,31 @@ It includes the sub-targets, but omits the `*:fix` variants.
 
 ```mermaid
 graph TD;
-    test:watch -----> codegen
+    test:watch ----> codegen
 
+    ci --> format
     ci --> build
     ci --> test
-    ci --> format
     ci --> lint
 
-    build --> codegen
+    build ---> codegen
 
-    test --> test:system
+    format --> prettier
+
     test --> test:integ
     test --> test:unit
-    test:system --> build
     test:integ --> codegen
     test:unit --> codegen
 
-    lint --> lint:cs
-    lint --> lint:es
-    lint --> lint:ss
-    lint --> lint:ts
-    lint:cs --> codegen
-    lint:es --> codegen
-    lint:ss --> codegen
-    lint:ts --> codegen
+    lint --> eslint
+    lint --> stylelint
+    lint --> tsc
+    eslint --> codegen
+    stylelint --> codegen
+    tsc --> codegen
 
     clean
-    dev -----> codegen
+    dev ----> codegen
 ```
 
 </details>
@@ -284,7 +282,7 @@ To visualize the exact target graph, run `nx graph`.
 
 ### `ci` target
 
-The `ci` target exists as the root target.
+The `ci` target exists in the root project.
 It defines the targets that are run as part of the CI build.
 
 ### `codegen` target
@@ -320,6 +318,10 @@ The `test` target defines three sub-targets: `unit`, `integ` (integration), and 
 These sub-targets originate from the three primary testing levels.
 See [“Software Testing § Testing levels” on Wikipedia][testing-levels].
 
+> **Warning**
+>
+> I have removed `test:system` sub-target (at least for now).
+
 The `unit` and `integ` sub-targets should not require a full build, but the `system` does.
 Projects that define `test:system` must customize the target to start the application under test.
 
@@ -338,7 +340,11 @@ Unless a language provides its own strict formatter (such as `go fmt`), projects
 Given the use of [Nx], Node (and prettier) already exist in the repository, so using it for more languages simplifies configuration (including IDE set up).
 
 The `format` target _checks_ for proper formatting, and it fails the build if it detects an issue.
+It depends on tool-specific tasks (example: `prettier`).
+
 The `format:fix` target exists for applying (fixing) the formatting.
+You should configure your IDE to format on save, so that you do not have to run this.
+The pre-commit hook should also apply formatting (see [lint-staged.config.cjs](./lint-staged.config.cjs)).
 
 ### `lint` target
 
@@ -353,27 +359,23 @@ This `lint` target does NOT include run those lint flags, but they are a part of
 The `lint` target defines many sub-targets.
 Each maps to a specific tool that may span multiple projects.
 Feel free to add a new tool and sub-target.
-For brevity, the sub-targets have a two-character name.
+For clarity, the sub-targets use the tool’s name as the target name.
 
-- `lint:cs`: StyleCop linting rules (C#).
-  _`cs` for **CS**harp (C#)`_
+- `eslint`: ESLint linting rules (many languages).
 
-- `lint:es`: ESLint linting rules (many languages).
-  _`es` for **ES**Lint._
-
-- `lint:ss`: Stylesheet linting rules (css, scss, etc).
-  _`ss` for **S**tyle**S**heets._
-
-- `lint:ts`: TypeScript type checking (`tsc`) as a form of linting (TypeScript).
-  _`ts` for **T**ype**S**cript._
+- `tsc`: TypeScript type checking (`tsc`) as a form of linting (TypeScript).
 
   _Note: Some folks consider type-checking as a pre-build step.
   I recommend it as an independent linting step to allow builds (especially a running development server) to execute without failing due to type issues in languages like Python or JavaScript/TypeScript._
 
 The `lint` target _checks_ for code quality violations, and it fails the build if it detects an issue.
-The `lint:*:fix` targets exist for fixing auto-fixable lint rule violations.
+
+The `lint:fix` target exists for fixing auto-fixable lint rule violations.
 Only some sub-targets provide a `*:fix` rule.
 As a result, you will probably just run the root `lint:fix` most of the time.
+
+You can also configure your IDE (per tool) to fix on save, so that you do not have to run `lint:fix`.
+The pre-commit hook should also apply fixes (see [lint-staged.config.cjs](./lint-staged.config.cjs)).
 
 ### `dev` target
 

@@ -8,6 +8,8 @@
 		},
 		"clean": {
 			"command": "shx rm -rf {projectRoot}/dist"
-		}
+		},
+		"format": {},
+		"prettier": {}
 	}
 }

@@ -16,16 +16,7 @@
 			"cache": false,
 			"dependsOn": ["codegen"]
 		},
-		"lint": {
-			"cache": true,
-			"dependsOn": ["lint:cs", "lint:es", "lint:ss", "lint:ts"],
-			"executor": "nx:noop"
-		},
-		"lint:cs": {
-			"cache": true,
-			"dependsOn": ["codegen"]
-		},
-		"lint:es": {
+		"eslint": {
 			"cache": true,
 			"dependsOn": ["codegen"],
 			"executor": "nx:run-commands",
@@ -35,7 +26,7 @@
 			},
 			"outputs": ["{options.outputFile}"]
 		},
-		"lint:es:fix": {
+		"eslint:fix": {
 			"cache": true,
 			"dependsOn": ["codegen"],
 			"executor": "nx:run-commands",
@@ -45,24 +36,38 @@
 			},
 			"outputs": ["{options.outputFile}"]
 		},
+		"format": {
+			"cache": true,
+			"dependsOn": ["prettier"],
+			"executor": "nx:noop"
+		},
+		"format:fix": {
+			"cache": true,
+			"dependsOn": ["prettier:fix"],
+			"executor": "nx:noop"
+		},
+		"lint": {
+			"cache": true,
+			"dependsOn": ["eslint", "tsc"],
+			"executor": "nx:noop"
+		},
 		"lint:fix": {
 			"cache": true,
-			"dependsOn": ["lint:es:fix", "lint:ss:fix"]
+			"dependsOn": ["eslint:fix"]
 		},
-		"lint:ss": {
+		"prettier": {
 			"cache": true,
-			"dependsOn": ["codegen"]
-		},
-		"lint:ss:fix": {
-			"cache": true,
-			"dependsOn": ["codegen"]
-		},
-		"lint:ts": {
-			"cache": true,
-			"dependsOn": ["codegen"],
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "tsc",
+				"command": "prettier '**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsp,tsx}' --ignore-path .gitignore --list-different",
+				"cwd": "{projectRoot}"
+			}
+		},
+		"prettier:fix": {
+			"cache": true,
+			"executor": "nx:run-commands",
+			"options": {
+				"command": "prettier '**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsp,tsx}' --ignore-path .gitignore --write",
 				"cwd": "{projectRoot}"
 			}
 		},
@@ -74,13 +79,18 @@
 			"cache": true,
 			"dependsOn": ["codegen"]
 		},
-		"test:system": {
-			"cache": false,
-			"dependsOn": ["build", "codegen"]
-		},
 		"test:unit": {
 			"cache": true,
 			"dependsOn": ["codegen"]
+		},
+		"tsc": {
+			"cache": true,
+			"dependsOn": ["codegen"],
+			"executor": "nx:run-commands",
+			"options": {
+				"command": "tsc",
+				"cwd": "{projectRoot}"
+			}
 		}
 	},
 	"workspaceLayout": {
