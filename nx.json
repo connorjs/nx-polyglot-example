@@ -31,7 +31,8 @@
 			"executor": "nx:run-commands",
 			"inputs": ["{projectRoot}/*.{cs,csproj}", "{projectRoot}/src"],
 			"options": {
-				"command": "dotnet build {projectRoot} --no-dependencies"
+				"command": "dotnet build --no-dependencies",
+				"cwd": "{projectRoot}"
 			},
 			"outputs": ["{workspaceRoot}/dist/{projectName}"]
 		},
@@ -39,7 +40,8 @@
 			"cache": false,
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "dotnet clean {projectRoot} --verbosity quiet"
+				"command": "dotnet clean --verbosity quiet",
+				"cwd": "{projectRoot}"
 			}
 		},
 		"dotnet run": {
@@ -47,7 +49,8 @@
 			"dependsOn": ["codegen"],
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "dotnet run --project {projectRoot}"
+				"command": "dotnet run",
+				"cwd": "{projectRoot}"
 			}
 		},
 		"eslint": {
@@ -55,7 +58,8 @@
 			"dependsOn": ["codegen"],
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "eslint -f pretty {projectRoot}"
+				"command": "eslint -f pretty .",
+				"cwd": "{projectRoot}"
 			},
 			"outputs": ["{options.outputFile}"]
 		},
@@ -64,7 +68,8 @@
 			"dependsOn": ["codegen"],
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "eslint -f pretty {projectRoot} --fix"
+				"command": "eslint -f pretty . --fix",
+				"cwd": "{projectRoot}"
 			},
 			"outputs": ["{options.outputFile}"]
 		},
@@ -91,14 +96,16 @@
 			"cache": true,
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "prettier '{projectRoot}/**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsp,tsx}' --ignore-path .gitignore --list-different"
+				"command": "prettier '**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsp,tsx}' --ignore-path .gitignore --list-different",
+				"cwd": "{projectRoot}"
 			}
 		},
 		"prettier:fix": {
 			"cache": true,
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "prettier '{projectRoot}/**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsp,tsx}' --ignore-path .gitignore --write"
+				"command": "prettier '**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsp,tsx}' --ignore-path .gitignore --write",
+				"cwd": "{projectRoot}"
 			}
 		},
 		"test": {
@@ -118,7 +125,8 @@
 			"dependsOn": ["codegen"],
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "tsc -p {projectRoot}"
+				"command": "tsc",
+				"cwd": "{projectRoot}"
 			}
 		},
 		"tsp compile": {
