@@ -1,0 +1,58 @@
+<Project>
+    <!-- MSBuild properties (general) -->
+    <!-- https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild-properties -->
+    <PropertyGroup>
+        <!-- Artifacts -->
+        <UseArtifactsOutput>true</UseArtifactsOutput>
+        <ArtifactsPath>$(MSBuildThisFileDirectory)build\artifacts</ArtifactsPath>
+    </PropertyGroup>
+
+    <!-- MSBuild properties (for .NET) -->
+    <!-- https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props -->
+    <PropertyGroup>
+        <!-- Framework properties -->
+        <TargetFramework>net8.0</TargetFramework>
+
+        <!-- Publish related -->
+        <IsPublishable>false</IsPublishable> <!-- Private -->
+
+        <!-- Code analysis -->
+        <AnalysisMode>Recommended</AnalysisMode>
+        <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers> <!-- Defaults to true in .NET 5+ -->
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+
+        <!-- Reference -->
+        <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences> <!-- I think... -->
+        <DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences> <!-- I think... -->
+
+        <!-- Code generation -->
+        <ImplicitUsings>disable</ImplicitUsings> <!-- Prefer explicit usings -->
+    </PropertyGroup>
+
+    <!-- C# compiler options -->
+    <!-- https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/ -->
+    <PropertyGroup>
+        <!-- Language -->
+        <Nullable>enable</Nullable>
+
+        <!-- Errors and warnings -->
+        <!--
+        1. Default all warns to errors (`TreatWarningsAsErrors`).
+        2. Allow some warns back to warns (`WarningsNotAsErrors`). For example,
+           a new warning has appeared that broke the build and we need time to
+           fix it. These SHOULD include an issue link.
+        3. Suppress some warns completely (`NoWarn`). For example, a warning
+           with which we disagree. These MUST include a comment explaining why.
+        -->
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <WarningsNotAsErrors/>
+        <NoWarn/>
+
+        <!-- Code generation -->
+        <Deterministic>true</Deterministic>
+
+        <!-- Advanced -->
+        <ErrorEndLocation>true</ErrorEndLocation> <!-- Tentative. I want to try this out. -->
+    </PropertyGroup>
+</Project>
