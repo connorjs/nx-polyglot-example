@@ -3,15 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "apps", "apps", "{A4C764A4-11EC-4CD6-BFA9-CF7F4F181862}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "weather-api", "weather-api", "{48C8B241-365E-455D-B192-D24BFED7FAE9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weather-api", "apps\weather-api\main\weather-api.csproj", "{933C185D-6CC6-42BD-A17C-614E85B4D2ED}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{5A0DF9EB-1565-4DB1-A1DB-46044A086FC9}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hello-cs", "hello-cs", "{25AAA773-10EE-4161-9BEC-32AC54E9017E}"
+# Project Type GUIDs: https://github.com/JamesW75/visual-studio-project-type-guid#readme
+Project("{687AD6DE-2DF8-4B75-A007-DEF66CD68131}") = "weather-api", "apps\weather-api\main\weather-api.csproj", "{933C185D-6CC6-42BD-A17C-614E85B4D2ED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hello-cs", "libs\hello-cs\main\hello-cs.csproj", "{871C8722-4B47-43E2-8E14-58D4FD7C31DF}"
 EndProject
