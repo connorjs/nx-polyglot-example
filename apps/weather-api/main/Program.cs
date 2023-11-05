@@ -1,4 +1,12 @@
 using Connorjs.NxPolyglotExample.Hello;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc;
 
-var message = HelloUtility.Hello("ASP.NET");
-System.Console.WriteLine(message);
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+
+app.MapGet("/", () => HelloUtility.Hello("ASP.NET"));
+
+app.MapGet("/hello", ([FromQuery(Name = "name")] string? name) => HelloUtility.Hello(name));
+
+app.Run();
