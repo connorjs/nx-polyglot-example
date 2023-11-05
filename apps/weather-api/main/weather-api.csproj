@@ -1,3 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\libs\hello-cs\main\hello-cs.csproj" />
+  </ItemGroup>
 </Project>
