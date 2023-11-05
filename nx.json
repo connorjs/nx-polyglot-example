@@ -38,7 +38,7 @@
 		},
 		"dev": {
 			"cache": false,
-			"dependsOn": ["dotnet run"],
+			"dependsOn": ["dotnet watch run"],
 			"executor": "nx:noop"
 		},
 		"dotnet build": {
@@ -60,21 +60,21 @@
 				"cwd": "{projectRoot}"
 			}
 		},
-		"dotnet run": {
-			"cache": false,
-			"dependsOn": ["codegen"],
-			"executor": "nx:run-commands",
-			"options": {
-				"command": "dotnet run --project main",
-				"cwd": "{projectRoot}"
-			}
-		},
 		"dotnet test": {
 			"cache": false,
 			"dependsOn": ["codegen"],
 			"executor": "nx:run-commands",
 			"options": {
 				"command": "dotnet test test",
+				"cwd": "{projectRoot}"
+			}
+		},
+		"dotnet watch run": {
+			"cache": false,
+			"dependsOn": ["codegen"],
+			"executor": "nx:run-commands",
+			"options": {
+				"command": "dotnet watch run --project main",
 				"cwd": "{projectRoot}"
 			}
 		},

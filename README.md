@@ -259,8 +259,8 @@ graph TD;
 
     clean ---> dotnet_clean[dotnet clean]
 
-    dev ---> dotnet_run[dotnet run]
-    dotnet_run --> codegen
+    dev ---> dotnet_watch_run[dotnet watch run]
+    dotnet_watch_run --> codegen
 ```
 
 </details>

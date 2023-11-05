@@ -7,7 +7,7 @@
 		"csharpier": {},
 		"dev": {},
 		"dotnet build": {},
-		"dotnet run": {},
+		"dotnet watch run": {},
 		"format": {}
 	}
 }
