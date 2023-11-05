@@ -10,6 +10,7 @@ Example [Nx] monorepo with multiple languages (polyglot).
 - [Getting started](#getting-started)
 - [Glossary](#glossary)
 - [Build targets](#build-targets)
+- [Dependency management](#dependency-management)
 
 ## My goals
 
@@ -407,14 +408,36 @@ The `dev` target should not depend on a full `build`.
 The `clean` target cleans (removes) the output of previous builds.
 It should NOT delete cached dependencies.
 
+## Dependency management
+
+The workspace manages all dependencies in root files to simplify dependency management across projects.
+This structure matches the [integrated repository approach][nx-integrated-repos].
+
+### npm dependencies
+
+The workspace manages all npm dependencies in the [root package.json](./package.json).
+
+While `dependencies` and `devDependencies` do not have an impact on the final bundle,
+attempt to keep test-only or build-only dependencies in the `devDependencies` group.
+This can provide some insight at-a-glance to a new developer regarding runtime dependencies.
+
+### NuGet dependencies
+
+The workspace manages all NuGet dependencies in the [root Directory.Packages.props](./Directory.Packages.props).
+This leverages [NuGet’s Central Package Management (CPM)][nuget-cpm].
+
+_Note: Individual .NET projects still reference their dependencies in their project files but without a version._
+
 [c4model]: https://c4model.com
 [dotnet-solutions-and-projects]: https://learn.microsoft.com/en-us/visualstudio/ide/solutions-and-projects-in-visual-studio?view=vs-2022
 [gradle-java]: https://docs.gradle.org/current/userguide/java_plugin.html
 [monorepo-tools]: https://monorepo.tools
 [msbuild-task]: https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2015/msbuild/msbuild-tasks
+[nuget-cpm]: https://learn.microsoft.com/en-us/nuget/consume-packages/Central-Package-Management
 [nx]: https://nx.dev/
 [nx-apps-and-libs]: https://nx.dev/concepts/more-concepts/applications-and-libraries
 [nx-enterprise]: https://nx.dev/concepts/more-concepts/monorepo-nx-enterprise
+[nx-integrated-repos]: https://nx.dev/concepts/integrated-vs-package-based
 [nx-task]: https://nx.dev/core-features/run-tasks
 [openapi-generator]: https://openapi-generator.tech
 [polyglot]: https://en.wikipedia.org/wiki/Polyglot_(computing)

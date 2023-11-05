@@ -47,7 +47,7 @@
 			"executor": "nx:run-commands",
 			"inputs": ["{projectRoot}/*.{cs,csproj}", "{projectRoot}/src"],
 			"options": {
-				"command": "dotnet build --no-dependencies",
+				"command": "dotnet build main --no-dependencies",
 				"cwd": "{projectRoot}"
 			},
 			"outputs": ["{workspaceRoot}/dist/{projectName}"]
@@ -65,7 +65,16 @@
 			"dependsOn": ["codegen"],
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "dotnet run",
+				"command": "dotnet run --project main",
+				"cwd": "{projectRoot}"
+			}
+		},
+		"dotnet test": {
+			"cache": false,
+			"dependsOn": ["codegen"],
+			"executor": "nx:run-commands",
+			"options": {
+				"command": "dotnet test test",
 				"cwd": "{projectRoot}"
 			}
 		},
@@ -113,15 +122,8 @@
 		},
 		"test": {
 			"cache": false,
-			"dependsOn": ["test:integ", "test:system", "test:unit"]
-		},
-		"test:integ": {
-			"cache": true,
-			"dependsOn": ["codegen"]
-		},
-		"test:unit": {
-			"cache": true,
-			"dependsOn": ["codegen"]
+			"dependsOn": ["dotnet test"],
+			"executor": "nx:noop"
 		},
 		"tsc": {
 			"cache": true,

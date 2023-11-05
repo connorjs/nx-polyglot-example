@@ -1,7 +1,6 @@
 {
 	"$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
 	"name": "hello-js",
-	"sourceRoot": "libs/hello-js/src",
 	"targets": {
 		"eslint": {},
 		"format": {},

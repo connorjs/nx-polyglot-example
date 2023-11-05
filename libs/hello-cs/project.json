@@ -1,11 +1,13 @@
 {
 	"$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
-	"name": "weather-api-spec",
+	"name": "hello-cs",
 	"targets": {
 		"build": {},
 		"clean": {},
+		"csharpier": {},
+		"dotnet build": {},
+		"dotnet test": {},
 		"format": {},
-		"prettier": {},
-		"tsp compile": {}
+		"test": {}
 	}
 }

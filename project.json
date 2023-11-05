@@ -1,14 +1,26 @@
 {
 	"$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
-	"implicitDependencies": ["hello-js", "weather-api", "weather-api-spec"],
+	"implicitDependencies": [
+		"hello-cs",
+		"hello-js",
+		"weather-api",
+		"weather-api-spec"
+	],
 	"name": "root",
 	"targets": {
+		"build": {
+			"dependsOn": ["^build"]
+		},
 		"ci": {
-			"dependsOn": ["^build", "^format", "^lint", "^test", "root-check"],
+			"dependsOn": ["build", "format", "lint", "test"],
 			"executor": "nx:noop"
 		},
 		"clean": {
 			"command": "nx run-many --target clean --exclude root"
+		},
+		"format": {
+			"command": "prettier '*.{cjs,js,json,md}' --ignore-path .gitignore --list-different",
+			"dependsOn": ["^format"]
 		},
 		"format:fix": {
 			"executor": "nx:run-commands",
@@ -19,15 +31,12 @@
 				]
 			}
 		},
-		"root-check": {
-			"cache": true,
-			"executor": "nx:run-commands",
-			"options": {
-				"commands": [
-					"eslint -f pretty '*.{cjs,js,json,md}'",
-					"prettier '*.{cjs,js,json,md}' --ignore-path .gitignore --list-different"
-				]
-			}
+		"lint": {
+			"command": "eslint -f pretty '*.{cjs,js,json,md}'",
+			"dependsOn": ["^lint"]
+		},
+		"test": {
+			"dependsOn": ["^test"]
 		}
 	}
 }

@@ -1,7 +1,6 @@
 {
 	"$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
 	"name": "weather-api",
-	"sourceRoot": "apps/weather-api",
 	"targets": {
 		"build": {},
 		"clean": {},
