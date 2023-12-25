@@ -1,0 +1,22 @@
+{
+	"$schema": "../node_modules/nx/schemas/project-schema.json",
+	"description": "Special project file to run targets against config files.",
+	"name": "config",
+	"namedInputs": {
+		"default": ["{workspaceRoot}/*", "{workspaceRoot}/.config/*"]
+	},
+	"targets": {
+		"eslint": {
+			"//": "Customize to run on root/config files.",
+			"cache": true,
+			"command": "eslint --format pretty '{,.config/}*.{cjs,js,json}'",
+			"inputs": ["default"]
+		},
+		"prettier": {
+			"//": "Customize to run on root/config files.",
+			"cache": true,
+			"command": "prettier --check '{,.config/}*.{cjs,js,json,md,yaml}'",
+			"inputs": ["default"]
+		}
+	}
+}
