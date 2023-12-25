@@ -11,7 +11,7 @@
 		"build": {
 			"dependsOn": ["^build"]
 		},
-		"ci": {
+		"ci-build": {
 			"dependsOn": ["build", "format", "lint", "test"],
 			"executor": "nx:noop"
 		},

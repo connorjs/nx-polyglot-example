@@ -93,7 +93,7 @@ Complete the following steps to build and run an application.
 4. Build and run an application.
 
    ```shell
-   nx ci # Executes a “full” CI build
+   nx ci-build # Executes a “full” CI build
    # TODO: Run an application
    ```
 
@@ -135,7 +135,7 @@ Some related, but different, terms follow.
 Continuous integration; the practice of executing the full, automated build regularly.
 
 The phrase “in CI” refers to the “official” execution of builds on the CI server.
-The `ci` build target represents the majority of the execution for that build on the CI server.
+The `ci-build` target represents the majority of the execution for that build on the CI server.
 
 ### Library
 
@@ -211,10 +211,10 @@ The following diagram shows a high-level overview of the targets and their depen
 graph TB;
     test:watch ---> codegen
 
-    ci --> format
-    ci --> build
-    ci --> test
-    ci --> lint
+    ci-build --> format
+    ci-build --> build
+    ci-build --> test
+    ci-build --> lint
 
     build --> codegen
     test --> codegen
@@ -234,10 +234,10 @@ It includes the sub-targets, but omits the `*:fix` variants.
 graph TD;
     test:watch ----> codegen
 
-    ci --> format
-    ci --> build
-    ci --> test
-    ci --> lint
+    ci-build --> format
+    ci-build --> build
+    ci-build --> test
+    ci-build --> lint
 
     build --> dotnet_build[dotnet build]
     dotnet_build --> codegen
@@ -291,9 +291,9 @@ For example, the `build` task depends on `dotnet build` and `vite build`.
 Using target dependencies this way allow developers to always use the target (example: `build`) and not worry about which technology or tool to use.
 It also restricts most target (command) logic to `nx.json` without needing to use Nx executors.
 
-### `ci` target
+### `ci-build` target
 
-The `ci` target exists in the root project.
+The `ci-build` target exists in the root project.
 It defines the targets that are run as part of the CI build.
 
 ### `codegen` target
