@@ -3,6 +3,9 @@
 	"affected": {
 		"defaultBase": "main"
 	},
+	"namedInputs": {
+		"default": ["{projectRoot}/**/*"]
+	},
 	"targetDefaults": {
 		"csharpier": {
 			"cache": true,

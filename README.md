@@ -12,9 +12,9 @@ Example [Nx] monorepo with multiple languages (polyglot).
 
 ## Goals
 
-1. Learn more about [Nx]
-2. Showcase a polyglot monorepo and its benefits
-3. Define (my) standard build targets (tasks)
+1. Learn more about [Nx].
+2. Showcase a polyglot monorepo and its benefits.
+3. Define (my) standard build targets (tasks).
 
 ## About
 

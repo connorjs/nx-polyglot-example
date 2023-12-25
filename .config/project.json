@@ -1,6 +1,6 @@
 {
 	"$schema": "../node_modules/nx/schemas/project-schema.json",
-	"description": "Special project file to run targets against config files.",
+	"description": "Special project to run targets against configuration files.",
 	"name": "config",
 	"namedInputs": {
 		"default": ["{workspaceRoot}/*", "{workspaceRoot}/.config/*"]
