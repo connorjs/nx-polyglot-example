@@ -3,7 +3,7 @@
 	"description": "Special project to run targets against configuration files.",
 	"name": "config",
 	"namedInputs": {
-		"default": ["{workspaceRoot}/*", "{workspaceRoot}/.config/*"]
+		"default": ["{workspaceRoot}/*", "{workspaceRoot}/.config/**/*"]
 	},
 	"targets": {
 		"eslint": {
@@ -12,7 +12,7 @@
 			"executor": "nx:run-commands",
 			"inputs": ["default"],
 			"options": {
-				"command": "eslint --format pretty '{,.config/}*.{cjs,js,json}'"
+				"command": "eslint --format pretty '{,.config/**/}*.{cjs,js,json}'"
 			}
 		},
 		"prettier": {
@@ -21,7 +21,7 @@
 			"executor": "nx:run-commands",
 			"inputs": ["default"],
 			"options": {
-				"command": "prettier --check '{,.config/}*.{cjs,js,json,md,yaml}'"
+				"command": "prettier --check '{,.config/**/}*.{cjs,js,json,md,yaml}'"
 			}
 		}
 	}
