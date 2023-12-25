@@ -28,14 +28,6 @@
 				"cwd": "{projectRoot}"
 			}
 		},
-		"csharpier:fix": {
-			"cache": false,
-			"executor": "nx:run-commands",
-			"options": {
-				"command": "dotnet csharpier .",
-				"cwd": "{projectRoot}"
-			}
-		},
 		"dev": {
 			"cache": false,
 			"dependsOn": ["dotnet watch run"],
@@ -88,19 +80,9 @@
 			},
 			"outputs": ["{options.outputFile}"]
 		},
-		"eslint:fix": {
-			"cache": true,
-			"dependsOn": ["codegen"],
-			"executor": "nx:run-commands",
-			"options": {
-				"command": "eslint -f pretty . --fix",
-				"cwd": "{projectRoot}"
-			},
-			"outputs": ["{options.outputFile}"]
-		},
 		"format": {
 			"cache": true,
-			"dependsOn": ["prettier"],
+			"dependsOn": ["csharpier", "prettier"],
 			"executor": "nx:noop"
 		},
 		"lint": {
@@ -108,16 +90,11 @@
 			"dependsOn": ["eslint", "tsc"],
 			"executor": "nx:noop"
 		},
-		"lint:fix": {
-			"cache": true,
-			"dependsOn": ["eslint:fix"]
-		},
 		"prettier": {
 			"cache": true,
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "prettier '**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsp,tsx}' --ignore-path .gitignore --list-different",
-				"cwd": "{projectRoot}"
+				"command": "prettier --list-different '{projectRoot}/**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsp,tsx,yaml,yml}'"
 			}
 		},
 		"test": {

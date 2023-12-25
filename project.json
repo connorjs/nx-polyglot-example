@@ -9,17 +9,19 @@
 	"name": "root",
 	"targets": {
 		"build": {
-			"dependsOn": ["^build"]
+			"dependsOn": ["^build"],
+			"executor": "nx:noop"
 		},
 		"ci-build": {
 			"dependsOn": ["build", "format", "lint", "test"],
 			"executor": "nx:noop"
 		},
 		"clean": {
-			"command": "nx run-many --target clean --exclude root"
+			"dependsOn": ["^clean"],
+			"executor": "nx:noop"
 		},
 		"format": {
-			"command": "prettier '*.{cjs,js,json,md}' --ignore-path .gitignore --list-different",
+			"command": "prettier '*.{cjs,js,json,md}' --list-different",
 			"dependsOn": ["^format"]
 		},
 		"format:fix": {
@@ -27,7 +29,7 @@
 			"options": {
 				"commands": [
 					"dotnet csharpier .",
-					"prettier '**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsp,tsx}' --ignore-path .gitignore --write"
+					"prettier '**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsp,tsx,yaml,yml}' --write"
 				]
 			}
 		},

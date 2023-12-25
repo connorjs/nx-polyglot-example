@@ -192,10 +192,10 @@ This sections provides an introduction into this standardization and then goes i
 
 While a polyglot workspace could have a different set of build targets per language or paradigm,
 I believe standardizing the build targets across all projects and languages improves the developer experience.
-This lessens the learning curve for a developer entering a different part of the solution.
+This lowers the learning curve for a developer entering a different part of the solution.
 
 Where applicable, I have chosen the .NET term for a target.
-npm has a few standards, with some common targets popularized in the community,
+npm has few standards, with some common targets popularized in the community,
 but I have found npm developers expect to check the run scripts and can easily adjust.
 At the original time of writing, I focused on these two technologies primarily.
 
