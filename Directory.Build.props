@@ -3,7 +3,7 @@
     <!-- https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild-properties -->
     <PropertyGroup>
         <!-- Artifacts -->
-        <ArtifactsPath>$(MSBuildProjectDirectory)\dist</ArtifactsPath>
+        <ArtifactsPath>$(MSBuildProjectDirectory)\..\build\$(MSBuildProjectName)</ArtifactsPath>
     </PropertyGroup>
 
     <!-- MSBuild properties (for .NET) -->

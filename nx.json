@@ -46,7 +46,7 @@
 			"options": {
 				"command": "dotnet build -c Release {projectRoot}/main"
 			},
-			"outputs": ["{projectName}/dist"]
+			"outputs": ["{projectRoot}/build/main"]
 		},
 		"dotnet test": {
 			"cache": true,
@@ -54,12 +54,13 @@
 			"executor": "nx:run-commands",
 			"inputs": [
 				"rootDotnetConfig",
-				"{projectRoot}/{main,test}/**/*.{cs,csproj}"
+				"{projectRoot}/{main,test}/**/*.{cs,csproj}",
+				"{projectRoot}/build/main"
 			],
 			"options": {
 				"command": "dotnet test -c Release {projectRoot}/test"
 			},
-			"outputs": ["{projectName}/dist"]
+			"outputs": ["{projectRoot}/build/test"]
 		},
 		"eslint": {
 			"cache": true,
