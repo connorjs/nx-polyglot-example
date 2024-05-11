@@ -25,7 +25,7 @@
 			"cache": true,
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "prettier --list-different '{projectRoot}/**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsp,tsx,yaml,yml}'"
+				"command": "prettier --check'{projectRoot}/**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsp,tsx,yaml,yml}'"
 			}
 		}
 	},
