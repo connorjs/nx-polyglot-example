@@ -25,8 +25,14 @@ jobs:
         with:
           global-json-file: global.json
 
-      - name: Install
+      - name: Install (npm)
         run: npm ci
+
+      - name: Install (dotnet tool)
+        run: dotnet tool restore
+
+      - name: Install (dotnet)
+        run: dotnet restore
 
       - name: CI build
         run: npm run ci-build
