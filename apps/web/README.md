@@ -7,19 +7,19 @@ Web application built with React and Vite.
 - Run the application.
 
   ```shell
-  nx web:dev
+  nx dev web
   ```
 
 - Analyze the production bundle with the Rollup visualizer.
 
   ```shell
-  nx web:visualize
+  nx visualize web
   ```
 
-  This task will generate three visualizations in the `libs/web/build/stats` directory to analyze the bundle size.
+  This task will generate three visualizations in the `apps/web/build/stats` directory to analyze the bundle size.
   See [rollup-plugin-visualizer](https://github.com/btd/rollup-plugin-visualizer) to learn more (although we use the Vite package).
 
   Open the folder containing the visualizations.
 
-  - Mac: `open libs/web/build/stats`
-  - Windows: `start libs/web/build/stats`
+  - Mac: `open apps/web/build/stats`
+  - Windows: `start apps/web/build/stats`

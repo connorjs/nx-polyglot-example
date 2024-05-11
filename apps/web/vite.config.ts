@@ -12,7 +12,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // https://vitejs.dev/config/
 export default defineConfig({
 	build: {
-		reportCompressedSize: false, // `rollup-plugin-visualizer` used instead
 		rollupOptions: {
 			output: {
 				manualChunks,
@@ -42,7 +41,7 @@ export default defineConfig({
 function manualChunks(id: string): ReturnType<GetManualChunk> {
 	// Chunk `react` and `react-dom` (with their dependencies).
 	// They change less often and can visualize the runtime bundle cost of React.
-	// Last checked dependencies: v18.2 in 2023-11
+	// Last checked dependencies: v18.3 in 2024.05
 	if (
 		chunkMatches(id, [
 			`/react/`,
