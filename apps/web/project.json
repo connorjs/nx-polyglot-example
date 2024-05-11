@@ -1,0 +1,46 @@
+{
+	"$schema": "../../node_modules/nx/schemas/project-schema.json",
+	"name": "web",
+	"projectType": "application",
+	"sourceRoot": "apps/web/src",
+	"targets": {
+		"build": {
+			"cache": true,
+			"command": "vite build {projectRoot}",
+			"dependsOn": ["codegen"],
+			"inputs": ["default", "rootTsConfig"],
+			"outputs": ["{projectRoot}/build/stats.json", "{projectRoot}/dist"]
+		},
+		"clean": {},
+		"codegen": {
+			"cache": true,
+			"executor": "nx:run-commands",
+			"inputs": ["css"],
+			"options": {
+				"command": "css-typed '{projectRoot}/src/**/*.css'"
+			},
+			"outputs": ["{projectRoot}/**/*.d.css.ts"]
+		},
+		"dev": {
+			"command": "vite {projectRoot}",
+			"dependsOn": ["codegen"]
+		},
+		"eslint": {},
+		"prettier": {},
+		"tsc": {},
+		"visualize": {
+			"cache": true,
+			"dependsOn": ["build"],
+			"executor": "nx:run-commands",
+			"inputs": ["{projectRoot}/build/stats.json"],
+			"options": {
+				"commands": [
+					"rollup-plugin-visualizer --template network --filename {projectRoot}/build/stats/network.html {projectRoot}/build/stats.json",
+					"rollup-plugin-visualizer --template sunburst --filename {projectRoot}/build/stats/sunburst.html {projectRoot}/build/stats.json",
+					"rollup-plugin-visualizer --template treemap --filename {projectRoot}/build/stats/treemap.html {projectRoot}/build/stats.json"
+				]
+			},
+			"outputs": ["{projectRoot}/build/stats"]
+		}
+	}
+}

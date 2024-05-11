@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+		// `paths` defines the “API” of internal projects (think `exports` in `package.json`).
+		// Nx also uses this as part of its dependency analysis.
+		//
+		// We define 2 types of project paths: standard and self-absolute.
+		//
+		// 1. `@/foo/*` represents a standard Nx package.
+		//    It will provide direct access to all files (`src/*`).
+		//    This simplifies tree-shaking and lowers the barrier-to-entry for module separation.
+		//
+		// 2. `~/*` represents an absolute import for the current Nx package (self-absolute).
+		//
+		// This `paths` scheme requires that all projects exist at the same depth,
+		// because it uses `../../` to enable self-absolute imports (`./src`).
+		// Each project’s TS config should define `"baseUrl": "."`.
+		"paths": {
+			":hello-js/*": ["../../libs/hello-js/src/*"],
+			"~/*": ["./src/*"]
+		}
+	},
+	"extends": "./.config/ts/tsconfig.json"
+}
