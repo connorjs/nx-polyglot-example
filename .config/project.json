@@ -9,14 +9,20 @@
 		"eslint": {
 			"//": "Customize to run on root/config files.",
 			"cache": true,
-			"command": "eslint --format pretty '{,.config/}*.{cjs,js,json}'",
-			"inputs": ["default"]
+			"executor": "nx:run-commands",
+			"inputs": ["default"],
+			"options": {
+				"command": "eslint --format pretty '{,.config/}*.{cjs,js,json}'"
+			}
 		},
 		"prettier": {
 			"//": "Customize to run on root/config files.",
 			"cache": true,
-			"command": "prettier --check '{,.config/}*.{cjs,js,json,md,yaml}'",
-			"inputs": ["default"]
+			"executor": "nx:run-commands",
+			"inputs": ["default"],
+			"options": {
+				"command": "prettier --check '{,.config/}*.{cjs,js,json,md,yaml}'"
+			}
 		}
 	}
 }
