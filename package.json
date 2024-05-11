@@ -4,8 +4,8 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"ci-build": "nx run-many -t build,csharpier,eslint,prettier,tsc --exclude root",
-		"prepare": "dotnet tool restore && is-ci || husky husky"
+		"ci-build": "nx run-many -t 'build,csharpier,dotnet build,dotnet test,eslint,prettier,tsc' --exclude root",
+		"prepare": "is-ci || husky husky"
 	},
 	"dependencies": {
 		"react": "^18.3.1",

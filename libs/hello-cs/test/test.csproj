@@ -1,0 +1,13 @@
+<Project Sdk="MSTest.Sdk">
+    <PropertyGroup>
+        <RootNamespace>Connorjs.NxPolyglotExample.Hello</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="FluentAssertions"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="../main/main.csproj"/>
+    </ItemGroup>
+</Project>

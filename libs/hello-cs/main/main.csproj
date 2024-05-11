@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <RootNamespace>Connorjs.NxPolyglotExample.Hello</RootNamespace>
+    </PropertyGroup>
+</Project>
