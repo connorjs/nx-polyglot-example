@@ -1,8 +1,6 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
-	"compilerOptions": {
-		"references": [{ "path": "apps/web" }, { "path": "libs/hello-js" }]
-	},
 	"extends": "./tsconfig.options.json",
-	"files": []
+	"files": [],
+	"references": [{ "path": "apps/web" }, { "path": "libs/hello-js" }]
 }
