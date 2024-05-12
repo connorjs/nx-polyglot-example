@@ -1,0 +1,9 @@
+{
+	"name": "@connorjs/nx-polyglot-example-vitest",
+	"type": "module",
+	"exports": {
+		".": "./vitest.config.js",
+		"./dom-setup": "./vitest-dom-setup.mjs"
+	},
+	"types": "./vitest.config.d.ts"
+}

@@ -17,7 +17,8 @@
 		"paths": {
 			":hello-js/*": ["../../libs/hello-js/src/*"],
 			"~/*": ["./src/*"]
-		}
+		},
+		"types": ["@testing-library/jest-dom/vitest"]
 	},
 	"extends": "./.config/ts/tsconfig.json"
 }

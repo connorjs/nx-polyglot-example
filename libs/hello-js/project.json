@@ -5,6 +5,7 @@
 	"sourceRoot": "libs/hello-js/src",
 	"targets": {
 		"clean": {},
+		"coverage.vitest": {},
 		"eslint": {},
 		"prettier": {},
 		"tsc": {}

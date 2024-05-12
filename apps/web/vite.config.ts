@@ -1,16 +1,15 @@
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-
+import { vitestConfig } from "@connorjs/nx-polyglot-example-vitest";
 import react from "@vitejs/plugin-react-swc";
 import type { GetManualChunk } from "rollup";
 import { visualizer } from "rollup-plugin-visualizer";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const projectRoot = import.meta.dirname;
 
 // https://vitejs.dev/config/
 export default defineConfig({
+	...vitestConfig(projectRoot),
 	build: {
 		rollupOptions: {
 			output: {
@@ -31,7 +30,7 @@ export default defineConfig({
 		// Visualizer should be last
 		visualizer({
 			brotliSize: true,
-			filename: `${__dirname}/build/stats.json`,
+			filename: `${projectRoot}/build/stats.json`,
 			template: `raw-data`, // Used by `visualize` target
 		}),
 	],

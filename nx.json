@@ -13,7 +13,8 @@
 		],
 		"rootTsConfig": [
 			"{workspaceRoot}/.config/ts/tsconfig.json",
-			"{workspaceRoot}/tsconfig.json"
+			"{workspaceRoot}/tsconfig.json",
+			"{workspaceRoot}/tsconfig.options.json"
 		],
 		"typescript": ["{projectRoot}/**/*.{ts,tsx}", "{projectRoot}/tsconfig.json"]
 	},
@@ -59,6 +60,16 @@
 				"{projectRoot}/build/{projectName}.test",
 				"{workspaceRoot}/coverage/{projectName}.cobertura.xml"
 			]
+		},
+		"coverage.vitest": {
+			"cache": true,
+			"dependsOn": ["^tsc", "codegen"],
+			"executor": "nx:run-commands",
+			"inputs": ["rootTsConfig", "default", "{workspaceRoot}/vitest.config.ts"],
+			"options": {
+				"command": "vitest run --coverage --root {projectRoot}"
+			},
+			"outputs": ["{workspaceRoot}/coverage/{projectName}.cobertura.xml"]
 		},
 		"csharpier": {
 			"cache": true,
