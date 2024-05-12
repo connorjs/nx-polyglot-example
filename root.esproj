@@ -9,5 +9,6 @@
 		<Script Include=".config\ts\README.md" />
 		<Script Include=".config\ts\tsconfig.json" />
 		<Script Include=".github\workflows\ci.yaml" />
+		<Script Include="tsconfig.json" />
 	</ItemGroup>
 </Project>

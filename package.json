@@ -4,7 +4,7 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"ci-build": "nx run-many -t 'build,csharpier,dotnet build,dotnet test,eslint,prettier,tsc' --exclude root",
+		"ci-build": "nx run-many -t 'build,build.net,coverage.net,csharpier,eslint,prettier,tsc' --exclude root",
 		"prepare": "is-ci || husky husky"
 	},
 	"dependencies": {

@@ -6,6 +6,14 @@
 		"default": ["{workspaceRoot}/*", "{workspaceRoot}/.config/**/*"]
 	},
 	"targets": {
+		"clean": {
+			"//": "Customize to run on root/config files.",
+			"executor": "nx:run-commands",
+			"options": {
+				// shx if needed
+				"command": "rm -rf coverage"
+			}
+		},
 		"eslint": {
 			"//": "Customize to run on root/config files.",
 			"cache": true,

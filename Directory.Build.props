@@ -54,6 +54,13 @@
 		<ErrorEndLocation>true</ErrorEndLocation> <!-- Tentative. I want to try this out. -->
 	</PropertyGroup>
 
+	<!-- Unit test coverage -->
+	<PropertyGroup Condition="$(MSBuildProjectName.EndsWith('test'))">
+		<!-- Recommended to disable if no C++ native code. -->
+		<EnableStaticNativeInstrumentation>False</EnableStaticNativeInstrumentation>
+		<EnableDynamicNativeInstrumentation>False</EnableDynamicNativeInstrumentation>
+	</PropertyGroup>
+
 	<!-- Unit test usings -->
 	<ItemGroup Condition="$(MSBuildProjectName.EndsWith('test'))">
 		<Using Include="FluentAssertions" />
