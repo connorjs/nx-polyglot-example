@@ -5,6 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"ci-build": "nx run-many -t 'build,build.net,coverage.net,coverage.vitest,csharpier,eslint,prettier,tsc' --exclude root",
+		"postci-build": "nx summary scripts",
 		"prepare": "is-ci || husky husky"
 	},
 	"dependencies": {

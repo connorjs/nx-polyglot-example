@@ -1,0 +1,21 @@
+{
+	"$schema": "../../node_modules/nx/schemas/project-schema.json",
+	"name": "scripts",
+	"targets": {
+		"eslint": {},
+		"prettier": {},
+		"summary": {
+			"dependsOn": ["summary-coverage"],
+			"executor": "nx:noop"
+		},
+		"summary-coverage": {
+			"executor": "nx:run-commands",
+			"options": {
+				"commands": [
+					"dotnet reportgenerator -reports:'coverage/raw/*.cobertura.xml' -targetdir:coverage/sonar -reporttypes:SonarQube",
+					"dotnet reportgenerator -reports:'coverage/raw/*.cobertura.xml' -targetdir:coverage/html -reporttypes:Html"
+				]
+			}
+		}
+	}
+}

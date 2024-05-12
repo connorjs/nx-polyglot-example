@@ -26,7 +26,7 @@ export function vitestConfig(projectRoot) {
 				include: [`src`],
 				provider: `v8`,
 				reporter: [[`cobertura`, { file: `${projectName}.cobertura.xml` }]],
-				reportsDirectory: `${workspaceRoot}/coverage`,
+				reportsDirectory: `${workspaceRoot}/coverage/raw`,
 				thresholds: {
 					branches: 80,
 					functions: 100,
