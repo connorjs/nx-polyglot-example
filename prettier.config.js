@@ -2,7 +2,7 @@
 export default {
 	overrides: [
 		{
-			files: `*.{csproj,esproj,props}`,
+			files: `*.{csproj,esproj,props,xml}`,
 			options: {
 				parser: `xml`,
 				xmlQuoteAttributes: `double`, // Match prettier

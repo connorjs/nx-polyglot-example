@@ -5,9 +5,9 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<Script Include=".config\dotnet-tools.json" />
-	  <Script Include=".config\project.json" />
-	  <Script Include=".config\ts\README.md" />
-	  <Script Include=".config\ts\tsconfig.json" />
-	  <Script Include=".github\workflows\ci.yaml" />
+		<Script Include=".config\project.json" />
+		<Script Include=".config\ts\README.md" />
+		<Script Include=".config\ts\tsconfig.json" />
+		<Script Include=".github\workflows\ci.yaml" />
 	</ItemGroup>
 </Project>
