@@ -31,5 +31,8 @@ jobs:
       - name: Install (dotnet tool)
         run: dotnet tool restore
 
+      - name: Install (dotnet)
+        run: dotnet restore
+
       - name: CI build
         run: npm run ci-build
