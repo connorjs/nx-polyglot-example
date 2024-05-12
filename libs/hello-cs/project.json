@@ -2,10 +2,13 @@
 	"$schema": "../../node_modules/nx/schemas/project-schema.json",
 	"name": "hello-cs",
 	"projectType": "library",
+	"tags": ["dotnet"],
 	"targets": {
 		"clean": {},
 		"csharpier": {},
 		"dotnet build": {},
-		"dotnet test": {}
+		"dotnet test": {},
+		"eslint": {},
+		"prettier": {}
 	}
 }

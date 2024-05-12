@@ -1,6 +1,8 @@
 build/
 dist/
 node_modules/
-TestResults/
+obj/
+obj\Debug/
 .nx/
 *.d.css.ts
+*.user

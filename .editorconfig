@@ -1,12 +1,26 @@
 root = true
 
 [*]
+# Prettier default
 charset = utf-8
-end_of_line = lf
-# Use tabs: https://alexandersandberg.com/articles/default-to-tabs-instead-of-spaces-for-an-accessible-first-environment/
-indent_style = tab
 insert_final_newline = true
+end_of_line = lf
+max_line_length = 80
 trim_trailing_whitespace = true
 
+# Custom
+# Use tabs: https://alexandersandberg.com/articles/default-to-tabs-instead-of-spaces-for-an-accessible-first-environment/
+indent_style = tab
+
 [*.{yml,yaml}]
-indent_style = space # YAML disallows tabs
+# YAML disallows tabs
+indent_size = 2
+indent_style = space
+
+[*.cs]
+# CSharpier default is 100
+max_line_length = 100 
+
+[*.{csproj,esproj,props,xml}]
+# Increase line length given C# XML is whitespace sensitive
+max_line_length = 100 
