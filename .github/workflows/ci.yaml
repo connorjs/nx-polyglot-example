@@ -38,8 +38,8 @@ jobs:
         uses: codecov/codecov-action@v4
         with:
           disable_search: true
-          files: coverage/*.cobertura.xml
           fail_ci_if_error: true
+          files: coverage/*.cobertura.xml
           flags: unittests
           plugins: noop
           token: ${{ secrets.CODECOV_TOKEN }}
