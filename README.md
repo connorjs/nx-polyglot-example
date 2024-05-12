@@ -31,13 +31,17 @@ all of which speed up local development.
 An overview of the root directories follows.
 Refer to the [§ Glossary](#glossary) for clarity on any terms.
 
-- `.husky`: Git hooks
+- `.github`: GitHub files including workflows
 
 - `apps`: Applications
 
 - `docs/decisions`: Any decision records (ADRs)
 
+- `husky`: Git hooks
+
 - `libs`: Libraries
+
+- `tools`: Custom build tools
 
 - Repository-wide configuration files live in the root directory or in `.config`
 
@@ -52,10 +56,10 @@ Refer to the [§ Glossary](#glossary) for clarity on any terms.
 ### Project naming conventions
 
 Projects reside within the `apps` and `libs` directories.
-They should follow the naming conventions of their technology.
+They all use `kebab-case` naming.
 
-For example, npm/Node projects use `lower-kebab-case-like-this`
-and .NET projects use `Namespaced.PascalCase.LikeThis`.
+.NET Nx projects consist of two .NET projects: `*-main.csproj` and `*-test.csproj`.
+This allows Nx to treat it as a single project to match build semantics regardless of .NET separating test files.
 
 ## Getting started
 
@@ -75,11 +79,11 @@ Complete the following steps to build and run an application.
    dotnet --version
    ```
 
-2. Install npm dependencies.
-   This will also restore .NET tool dependencies.
+2. Install dependencies.
 
    ```shell
-   npm ci # or npm i
+   npm ci
+   dotnet tool restore
    ```
 
 3. Install `nx` globally.
@@ -99,6 +103,8 @@ Complete the following steps to build and run an application.
 
    The `ci-build` npm run script executes a “full” CI build including the .NET projects.
    It uses `nx run-many`; see [package.json](./package.json) for the full list of targets.
+
+   Running **Build solution** in Visual Studio or Rider should also work.
 
 ## Glossary
 
@@ -150,7 +156,7 @@ Applications and libraries both represent projects.
 
 The git repository and all of its code/files. _Also known as **Solution** and **Workspace**._
 
-- **Repository** used when emphasizing the git or raw files aspect.
+- **Repository** used when emphasizing the git (raw files) aspect.
 - **Solution** used when emphasizing the library and application code, given they solve problems (provide value).
   - **.NET Solution**: Used when explicitly referencing the .NET (C#) concept:
     [“What are solutions and projects?”][dotnet-solutions-and-projects]
