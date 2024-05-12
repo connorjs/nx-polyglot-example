@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Full depth (not shallow) for better relevancy of Sonar analysis
 
       - name: Use Node.js
         uses: actions/setup-node@v4
@@ -39,7 +41,13 @@ jobs:
         with:
           disable_search: true
           fail_ci_if_error: true
-          files: coverage/*.cobertura.xml
+          files: coverage/raw/*.cobertura.xml
           flags: unittests
           plugins: noop
           token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

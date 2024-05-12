@@ -51,14 +51,14 @@
 				"commands": [
 					"dotnet run -c Release --project {projectRoot}/test --coverage --coverage-output {projectName}.cobertura.xml --coverage-output-format cobertura",
 					// shx if needed
-					"mkdir -p coverage",
-					"mv {projectRoot}/build/{projectName}.test/bin/{projectName}.test/release/TestResults/{projectName}.cobertura.xml coverage"
+					"mkdir -p coverage/raw",
+					"mv {projectRoot}/build/{projectName}.test/bin/{projectName}.test/release/TestResults/{projectName}.cobertura.xml coverage/raw"
 				],
 				"parallel": false
 			},
 			"outputs": [
 				"{projectRoot}/build/{projectName}.test",
-				"{workspaceRoot}/coverage/{projectName}.cobertura.xml"
+				"{workspaceRoot}/coverage/raw/{projectName}.cobertura.xml"
 			]
 		},
 		"coverage.vitest": {
@@ -69,7 +69,7 @@
 			"options": {
 				"command": "vitest run --coverage --root {projectRoot}"
 			},
-			"outputs": ["{workspaceRoot}/coverage/{projectName}.cobertura.xml"]
+			"outputs": ["{workspaceRoot}/coverage/raw/{projectName}.cobertura.xml"]
 		},
 		"csharpier": {
 			"cache": true,

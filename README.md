@@ -2,6 +2,9 @@
 
 Example [Nx] monorepo with multiple languages (polyglot).
 
+[![codecov](https://codecov.io/gh/connorjs/nx-polyglot-example/graph/badge.svg?token=ZISDIB5PRK)](https://codecov.io/gh/connorjs/nx-polyglot-example)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=connorjs_nx-polyglot-example&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=connorjs_nx-polyglot-example)
+
 **Table of contents**
 
 - [Goals](#goals)
@@ -15,6 +18,7 @@ Example [Nx] monorepo with multiple languages (polyglot).
 1. Learn more about [Nx].
 2. Showcase a polyglot monorepo and its benefits.
 3. Define (my) standard build targets (tasks).
+4. Learn about industry tools.
 
 ## About
 
@@ -163,3 +167,28 @@ The git repository and all of its code/files. _Also known as **Solution** and **
 - **Workspace**: Used when emphasizing the collection of projects or discussing build orchestration.
 
 [dotnet-solutions-and-projects]: https://learn.microsoft.com/en-us/visualstudio/ide/solutions-and-projects-in-visual-studio?view=vs-2022
+
+## Industry tools
+
+### Codecov
+
+Codecov project: <https://codecov.io/gh/connorjs/nx-polyglot-example>
+
+|                    Sunburst                     |                Grid                 |                  Icicle                   |
+| :---------------------------------------------: | :---------------------------------: | :---------------------------------------: |
+| [![Codecov sunburst graph][sunburst]][sunburst] | [![Codecov grid graph][grid]][grid] | [![Codecov icicle graph][icicle]][icicle] |
+
+[sunburst]: https://codecov.io/gh/connorjs/nx-polyglot-example/graphs/sunburst.svg?token=ZISDIB5PRK
+[grid]: https://codecov.io/gh/connorjs/nx-polyglot-example/graphs/tree.svg?token=ZISDIB5PRK
+[icicle]: https://codecov.io/gh/connorjs/nx-polyglot-example/graphs/icicle.svg?token=ZISDIB5PRK
+
+### SonarCloud
+
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=connorjs_nx-polyglot-example)](https://sonarcloud.io/summary/new_code?id=connorjs_nx-polyglot-example)
+
+SonarCloud project: <https://sonarcloud.io/project/overview?id=connorjs_nx-polyglot-example>
+
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=connorjs_nx-polyglot-example&metric=bugs)](https://sonarcloud.io/summary/new_code?id=connorjs_nx-polyglot-example)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=connorjs_nx-polyglot-example&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=connorjs_nx-polyglot-example)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=connorjs_nx-polyglot-example&metric=coverage)](https://sonarcloud.io/summary/new_code?id=connorjs_nx-polyglot-example)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=connorjs_nx-polyglot-example&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=connorjs_nx-polyglot-example)
