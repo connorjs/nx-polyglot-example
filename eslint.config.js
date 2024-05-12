@@ -4,10 +4,10 @@ export default [
 	...connorjsConfig,
 	{
 		// Customize JSONC rules for Nx files
-		files: [`nx.json`, `project.json`],
+		files: [`nx.json`, `**/project.json`],
 		rules: {
 			"jsonc/no-comments": `off`,
 		},
 	},
-	{ ignores: [`.nx`] },
+	{ ignores: [`.config/dotnet-tools.json`, `.nx`] },
 ];

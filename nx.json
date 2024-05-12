@@ -18,6 +18,16 @@
 		"typescript": ["{projectRoot}/**/*.{ts,tsx}", "{projectRoot}/tsconfig.json"]
 	},
 	"targetDefaults": {
+		"build.net": {
+			"cache": true,
+			"dependsOn": ["^build.net"],
+			"executor": "nx:run-commands",
+			"inputs": ["rootDotnetConfig", "{projectRoot}/main/**/*"],
+			"options": {
+				"command": "dotnet build -c Release {projectRoot}/main"
+			},
+			"outputs": ["{projectRoot}/build/{projectName}.main"]
+		},
 		"clean": {
 			"cache": false,
 			"executor": "nx:run-commands",
@@ -31,36 +41,31 @@
 			// Create codegen target as a no-op, so that other `targetDefaults` can reference it
 			"executor": "nx:noop"
 		},
+		"coverage.net": {
+			"cache": true,
+			"dependsOn": ["build.net"],
+			"executor": "nx:run-commands",
+			"inputs": ["rootDotnetConfig", "{projectRoot}/test/**/*"],
+			"options": {
+				"commands": [
+					"dotnet run -c Release --project {projectRoot}/test --coverage --coverage-output {projectName}.cobertura.xml --coverage-output-format cobertura",
+					// shx if needed
+					"mkdir -p coverage",
+					"mv {projectRoot}/build/{projectName}.test/bin/{projectName}.test/release/TestResults/{projectName}.cobertura.xml coverage"
+				],
+				"parallel": false
+			},
+			"outputs": [
+				"{projectRoot}/build/{projectName}.test",
+				"{workspaceRoot}/coverage/{projectName}.cobertura.xml"
+			]
+		},
 		"csharpier": {
 			"cache": true,
 			"executor": "nx:run-commands",
 			"options": {
 				"command": "dotnet csharpier --check {projectRoot}"
 			}
-		},
-		"dotnet build": {
-			"cache": true,
-			"dependsOn": ["^dotnet build"],
-			"executor": "nx:run-commands",
-			"inputs": ["rootDotnetConfig", "{projectRoot}/main/**/*.{cs,csproj}"],
-			"options": {
-				"command": "dotnet build -c Release {projectRoot}/main"
-			},
-			"outputs": ["{projectRoot}/build/main"]
-		},
-		"dotnet test": {
-			"cache": true,
-			"dependsOn": ["dotnet build"],
-			"executor": "nx:run-commands",
-			"inputs": [
-				"rootDotnetConfig",
-				"{projectRoot}/{main,test}/**/*.{cs,csproj}",
-				"{projectRoot}/build/main"
-			],
-			"options": {
-				"command": "dotnet test -c Release {projectRoot}/test"
-			},
-			"outputs": ["{projectRoot}/build/test"]
 		},
 		"eslint": {
 			"cache": true,

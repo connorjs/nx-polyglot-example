@@ -4,10 +4,10 @@
 	"projectType": "library",
 	"tags": ["dotnet"],
 	"targets": {
+		"build.net": {},
 		"clean": {},
+		"coverage.net": {},
 		"csharpier": {},
-		"dotnet build": {},
-		"dotnet test": {},
 		"eslint": {},
 		"prettier": {}
 	}
