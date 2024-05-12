@@ -21,6 +21,7 @@
 			},
 			"outputs": ["{projectRoot}/**/*.d.css.ts"]
 		},
+		"coverage.vitest": {},
 		"dev": {
 			"command": "vite {projectRoot}",
 			"dependsOn": ["codegen"]

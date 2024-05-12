@@ -1,5 +1,5 @@
 {
 	"compilerOptions": { "baseUrl": ".", "outDir": "./build/tsc" },
 	"extends": "../../tsconfig.options.json",
-	"include": ["src"]
+	"include": ["src", "vitest.config.ts"]
 }
