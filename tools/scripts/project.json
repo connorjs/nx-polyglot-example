@@ -3,12 +3,7 @@
 	"name": "scripts",
 	"targets": {
 		"eslint": {},
-		"prettier": {},
-		"summary": {
-			"dependsOn": ["summary-coverage"],
-			"executor": "nx:noop"
-		},
-		"summary-coverage": {
+		"merge-coverage": {
 			"executor": "nx:run-commands",
 			"options": {
 				"commands": [
@@ -16,6 +11,11 @@
 					"dotnet reportgenerator -reports:'coverage/raw/*.cobertura.xml' -targetdir:coverage/html -reporttypes:Html"
 				]
 			}
-		}
+		},
+		"post-ci-build": {
+			"dependsOn": ["merge-coverage"],
+			"executor": "nx:noop"
+		},
+		"prettier": {}
 	}
 }
