@@ -21,7 +21,7 @@
 			"executor": "nx:run-commands",
 			"inputs": ["default"],
 			"options": {
-				"command": "prettier --check '{,.config/**/}*.{cjs,js,json,md,yaml}'"
+				"command": "prettier --check '{,.config/**/}*.{cjs,esproj,js,json,md,props,yaml}'"
 			}
 		}
 	}

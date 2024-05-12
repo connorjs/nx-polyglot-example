@@ -5,6 +5,6 @@
  * @returns hello string.
  */
 export function hello(name?: string | undefined): string {
-  const nameToReturn = name || `world`;
-  return `Hello, ${nameToReturn}!`;
+	const nameToReturn = name || `world`;
+	return `Hello, ${nameToReturn}!`;
 }

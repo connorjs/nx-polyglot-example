@@ -6,7 +6,7 @@
 	"targets": {
 		"clean": {},
 		"eslint": {},
-		"format": {},
+		"prettier": {},
 		"tsc": {}
 	}
 }

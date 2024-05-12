@@ -4,5 +4,5 @@ export default {
 		`eslint --format pretty --fix`,
 		`prettier --write`,
 	],
-	"*.{css,md,pcss,scss,tsp,yaml,yml}": `prettier --write`,
+	"*.{csproj,css,esproj,md,pcss,scss,tsp,xml,yaml,yml}": `prettier --write`,
 };

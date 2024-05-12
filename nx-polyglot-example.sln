@@ -2,36 +2,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{F2037EF4-F988-45FA-A492-C295F7E0C338}"
-	ProjectSection(SolutionItems) = preProject
-		.config\dotnet-tools.json = .config\dotnet-tools.json
-		.editorconfig = .editorconfig
-		.gitattributes = .gitattributes
-		.gitignore = .gitignore
-		.node-version = .node-version
-		Directory.Build.props = Directory.Build.props
-		Directory.Packages.props = Directory.Packages.props
-		global.json = global.json
-		nx.json = nx.json
-		README.md = README.md
-		eslint.config.js = eslint.config.js
-		LICENSE = LICENSE
-		lint-staged.config.js = lint-staged.config.js
-		package.json = package.json
-		tsconfig.json = tsconfig.json
-		tsconfig.options.json = tsconfig.options.json
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{A527B856-5A6C-4C90-994A-3541E2A8C94A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hello-cs", "hello-cs", "{99ACADD7-5B4E-4233-96F0-15768377EFE0}"
-	ProjectSection(SolutionItems) = preProject
-		libs\hello-cs\project.json = libs\hello-cs\project.json
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hello-cs.main", "libs\hello-cs\main\hello-cs.main.csproj", "{B3597592-6435-4EE7-B8BD-C5F40ECF3345}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "main", "libs\hello-cs\main\main.csproj", "{B3597592-6435-4EE7-B8BD-C5F40ECF3345}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hello-cs.test", "libs\hello-cs\test\hello-cs.test.csproj", "{99873362-8B3B-4A92-B966-9C363B348413}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "libs\hello-cs\test\test.csproj", "{99873362-8B3B-4A92-B966-9C363B348413}"
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "root", "root.esproj", "{2693E11E-23C9-4FFF-92C5-66DAD999CAF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +24,14 @@ Global
 		{99873362-8B3B-4A92-B966-9C363B348413}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99873362-8B3B-4A92-B966-9C363B348413}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99873362-8B3B-4A92-B966-9C363B348413}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2693E11E-23C9-4FFF-92C5-66DAD999CAF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2693E11E-23C9-4FFF-92C5-66DAD999CAF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2693E11E-23C9-4FFF-92C5-66DAD999CAF9}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{2693E11E-23C9-4FFF-92C5-66DAD999CAF9}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{B3597592-6435-4EE7-B8BD-C5F40ECF3345} = {99ACADD7-5B4E-4233-96F0-15768377EFE0}
-		{99873362-8B3B-4A92-B966-9C363B348413} = {99ACADD7-5B4E-4233-96F0-15768377EFE0}
 		{99ACADD7-5B4E-4233-96F0-15768377EFE0} = {A527B856-5A6C-4C90-994A-3541E2A8C94A}
+		{B3597592-6435-4EE7-B8BD-C5F40ECF3345} = {A527B856-5A6C-4C90-994A-3541E2A8C94A}
+		{99873362-8B3B-4A92-B966-9C363B348413} = {A527B856-5A6C-4C90-994A-3541E2A8C94A}
 	EndGlobalSection
 EndGlobal

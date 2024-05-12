@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.VisualStudio.JavaScript.SDK">
+	<PropertyGroup>
+		<BuildCommand>npm run ci-build -- --exclude tag:dotnet</BuildCommand>
+		<CleanCommand>nx run-many -t clean --exclude tag:dotnet</CleanCommand>
+	</PropertyGroup>
+</Project>

@@ -74,7 +74,7 @@
 			"cache": true,
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "prettier --check '{projectRoot}/**/*.{cjs,css,cts,graphql,html,js,json,jsonc,jsx,md,pcss,scss,ts,tsp,tsx,yaml,yml}'"
+				"command": "prettier --check '{projectRoot}/**/*.{cjs,csproj,css,cts,esproj,graphql,html,js,json,jsonc,jsx,md,pcss,props,scss,ts,tsp,tsx,xml,yaml,yml}'"
 			}
 		},
 		"tsc": {
